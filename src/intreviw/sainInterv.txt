@@ -1,0 +1,1219 @@
+1. INTRO:
+Hi, I am Saurabh!
+I have done my graduation in electronics and communication engineering. For the past 2.10 years, I am working into the world of Java development, Mostly in the retail world and I was working with stock-related project.
+I'm skilled in things like Java (the language, not coffee!), Spring Boot (like a turbocharger for Java), Junit (for testing), Kafka (a data streaming tool), Newrelic (Application performance management tool), PagerDuty(Incident Management tool), Maven and Gradle (tools for building code), and I worked on Azure Logic Apps and Azure File Share in Azure Cloud.
+
+2. Brief on previous Project assignment:
+I worked on a retail project, specifically I worked on the stock application.
+As a Java back-end developer, my role covered the entire software development life cycle, from coding in Java Spring Boot to testing with JUnit and Cucumber Automation. I used Kafka for event handling, supplier was sending stock related picture using kafka so, I have created listener using  @KafkaListener(topics = "${generic.kafka.topic.extraction}") and This json string msg I was converting into Java object formate using Object Mapper class readValue(supplyString, GenericSupplierDetails.class) method , Gradle for building, and New Relic for performance management. I also handled dashboard and alerts creation for monitoring the application, and incident management using PagerDuty. Additionally, I worked on Azure Logic Apps for scheduling cron jobs and utilized file sharing for data storage. We tracked progress using JIRA and followed an agile methodology. I supported the testing team when they had dependencies on our application.
+
+In previous we were facing Facing the challenge of growing code base, I initiated refactoring efforts. I created utility methods and focused on code reuse, such as developing an object-to-string converter and date-time conversions.
+
+when we talked about achievement, I successfully created numerous dashboards and alerts to monitor the application. I integrated communication channels like mobile phones, Teams, and email, ensuring prompt addressing of issues. I also implemented an escalation policy for on-call personnel to acknowledged issue as every as possible
+
+This experience allowed me to enhance my skills and Working with diverse technologies expanded my knowledge, and this is contributing significantly to my professional growth.
+===============================================================================================================================================================
+
+3. what is Collection, why we used collection
+In Java, a collection is a framework that provides an architecture to store and manipulate a group of objects. It represents a group of objects, known as elements, and provides various interfaces and classes to perform operations such as insertion, deletion, and traversal.
+
+Why we use collection in Java:
+1.   Dynamic Size:
+   - Collections can dynamically adjust in size, allowing for flexible management of elements that can grow or shrink as needed.
+   array is not dynamically adjust.
+   
+2.   Ease of Use:
+   - Collections provide high-level interfaces (e.g., List, Set, Map) and implementations for common data structures, making it easier for developers to work with complex data scenarios without having to implement data structures from scratch.
+ 
+3.   Efficient Retrieval and Manipulation:**
+   -  Collections offer methods for efficient retrieval and manipulation of elements. For example, lists allow you to access elements by index, sets ensure uniqueness, and maps provide key-value pair storage for fast retrieval.
+   
+4.   Type Safety:
+   - Generics in Java collections provide type safety, ensuring that the type of elements stored is known at compile-time, reducing runtime errors.   
+   
+   
+   Example: 
+i). import java.util.HashSet;
+
+public class SetExample {
+    public static void main(String[] args) {
+
+        HashSet<String> nameSet = new HashSet<>();
+
+        nameSet.add("Alice");
+        nameSet.add("Bob");
+        nameSet.add("Charlie");
+        nameSet.add("Alice"); // duplicates not allowed
+
+        nameSet.remove("Bob");
+
+		//Searching Element
+        boolean containsCharlie = nameSet.contains("Charlie");
+        System.out.println(containsCharlie); //True
+
+        //Enhanced for loop
+        for (String name : nameSet) {
+            System.out.println(name); //  Alice Charlie
+        }
+		
+       //OR The iterator() method is used to find the iterator of the set.
+        // The iterator is used to get the element one by one.
+
+        Iterator iterator = nameSet.iterator();
+        System.out.println("Using Iterator: ");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+ii). import java.util.ArrayList;
+import java.util.Collections;
+
+public class ListExample {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> numberList = new ArrayList<>();
+
+        numberList.add(5);
+        numberList.add(2);
+        numberList.add(8);
+
+        numberList.remove(Integer.valueOf(2));
+
+        // Sorting the list
+        Collections.sort(numberList);
+
+        //Searching element
+        int index = numberList.indexOf(8);
+        System.out.println("index "+index); //index 1
+
+        for (int number : numberList) {
+            System.out.println(number); // 5 8
+        }
+    }
+}
+
+iii) import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+
+        HashMap<String, Integer> ageMap = new HashMap<>();
+
+        ageMap.put("Alice", 25);
+        ageMap.put("Bob", 30);
+        ageMap.put("Charlie", 22);
+
+        ageMap.remove("Bob");
+
+        //Searching by key
+        boolean containsAlice = ageMap.containsKey("Alice");
+        System.out.println(containsAlice); // True
+
+        for (Map.Entry<String, Integer> entry : ageMap.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue()); // Alice:25 Charlie:22
+        }
+    }
+}
+
+
+4. Differnce b/w List ,set, map
+
+		Duplicates			Insertion Order Preserved     Null Values allowed               
+		
+
+List:-  Yes                    Yes and can retrieve        Yes, Multiple null              
+                                   using index                values allowed
+                               
+Set:-   No                     No                          Yes but only once    
+            
+Map:-   Not for keys           No                          Yes but only once for keys,        
+                                                           can have multiple null values
+														   
+5. Confusion question on Hash set and Hash map
+
+	        Implements         How Data is Stored          How they implemented internally    Duplicate Elements      Null Element            Iteration
+
+
+			
+HashSet     Set Interface      As values(As object)         As HashMap                             NO                 Only one null element    Can be Iterated
+                                                                                                                                                   
+
+HashMap   	Map Interface 	   As (entry) Key-Value pair    As a Arrays of a Entry<K,V>       Duplicate keys: No      Only one null key and   needs to convert
+                                                             Object                           Duplicate Values: Yes    multiple null values   into set to be 
+                                                                                                                                                 iterated
+																																				 																																				 
+6. What is polymorphism. method overloading and method overriding.
+Polymorphism is a concept in object-oriented programming. Poly means Many and morphishm means forms.
+There are two type: 
+Compile Time(method overloading) and runtime(method overriding) polymorphism.
+
+Method Overloading: If a class has multiple methods having same name but different parameters its known as method overloading. The compiler determines which method to call based on method signature. 
+eg. public class Calculator { 
+      public int add(int a, int b) {
+	     return a+b;
+    }
+	
+	public double add(double a, double b) { 
+	     return a+b;
+	}
+}	
+
+Method Overriding: If Child class(subclass) has a same method as declared in the parent class(super class), it is known as method overriding. It allows child class to provide a specialized version of a method defined in its parent class.
+eg. public class Animal {
+       public void makeSound() {
+	      System.out.println("Generic animal sound");
+	   }
+}
+
+public class Dog extends Animal {
+
+    @Override
+    public void makeSound() {
+	   System.out.println("woof! woof!")
+	}
+}
+
+8. Interface, abstract, runtime time exception.
+
+Interface:
+1. Interface is a keyword and blueprint of class.
+2. By default all the method in the interface are abstract we can not write implementations. But going forward in java 8 there is a feature where you can  write default and static methods in your interfaces.
+3. An Interface can only have public abstract methods.
+3. If there is certain feature where there is no relationship between the classes then you have to go for the interfaces.
+4. Using "implements" keyword we can implemented interface in class.
+5. Interface can only have public static final(constant) variable.
+6. Using Interfaces we can achieves multiple inheritance. class can implement multiple interface using commas(,).
+7. Interface can extends single interface.
+8. Doesn’t allow constructors.
+9. Interfaces can use for loose coupling(save, delete, update), multiple inheritance, define a Contract(set of method implementation is required if we implements interface)
+
+eg. // Interface for a data access object
+public interface DataAccessObject {
+    void save();
+    void update();
+    void delete();
+}
+ 
+// Concrete class implementing the DataAccessObject interface for database operations
+public class DatabaseDAO implements DataAccessObject {
+    @Override
+    public void save() {
+        // Implementation for saving in a database
+    }
+ 
+    // Implement other methods...
+}
+
+Abstract:
+1. Abstract is a keyword
+2. Abstract class can contain both abstract and concrete methods.
+3. if that is IS-A relationship between your classes then you can go for abstract class
+4. Abstract class can extend another concrete(regular) class or abstract class. 
+5. Can have member variables (fields).
+6. Allows constructors.
+7. Supports method implementation.
+8. Enables the use of access modifiers.
+
+Eg. abstract class Shape {
+    abstract void draw(); // Abstract method
+}
+ 
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+RunTime Exception(Un-Checked Exception):
+1.Unchecked exception are the one which are handled at runtime because they can not be checked at compile-time.
+2.The class which has inherits RuntimeException are known as Unchecked Exception.
+Eg.
+ArithmeticException, NullPointerException, ArrayIndexOutOfBoundException, etc
+
+Compile-Time Exception(Checked Exception):
+1.Checked Exception are the one which checked at compile-time.
+2.The class which directly inherits Throwable class except RuntimeException and Error(eg.OutOfMemoryError, VirtulaMachineError we can not handle)
+Eg. IOException, SQlException, ClassNotFoundException 
+
+9. Program (You have Two arrays merge them in 3rd array ,
+	 in sorting order, remember duplicates are not allowed)
+:
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class MergeArrays {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1,3,5,7};
+        int[] arr2 = {2,4,6,8,5,7}; // note duplicates are 5,7
+
+        int[] mergedArr = mergeAndSortArrays(arr1,arr2);
+        System.out.println("Merged and sorted Array: " + Arrays.toString(mergedArr));
+    }
+
+    private static int[] mergeAndSortArrays(int[] arr1, int[] arr2) {
+
+        //use set to handle uniqueness
+        Set<Integer> mergedSet = new HashSet<>();
+
+        //add elements from both arrays to the set
+        for(int num:arr1) {
+            mergedSet.add(num);
+        }
+        for(int num:arr2) {
+            mergedSet.add(num);
+        }
+
+        //convert set back to array
+        int[] mergedArray = mergedSet.stream().mapToInt(Integer::intValue).toArray();
+
+        // Sort the merged array
+        Arrays.sort(mergedArray);
+
+        return  mergedArray;
+    }
+}
+
+===========================================================================================================================================================
+In Java, `mapToInt(Integer::intValue)` is part of the Stream API and is used to convert a stream of `Integer` objects to a stream of primitive `int` values. Let me break down its meaning:
+ 
+1. **`mapToInt`:**
+   - `mapToInt` is an intermediate operation in the Stream API that transforms each element of the stream using the provided function.
+ 
+2. **`Integer::intValue`:**
+   - `Integer::intValue` is a method reference to the `intValue()` method of the `Integer` class.
+   - This method reference is equivalent to writing a lambda expression like `integer -> integer.intValue()`.
+ 
+When combined, `mapToInt(Integer::intValue)` is saying that for each element in the stream of `Integer` objects, convert it to its corresponding primitive `int` value using the `intValue()` method. This is commonly used when you have a stream of boxed integers (`Integer` objects) and want to operate on the primitive `int` values.
+ 
+Here's a simple example:
+ 
+```java
+import java.util.Arrays;
+ 
+public class MapToIntExample {
+    public static void main(String[] args) {
+        Integer[] integers = {1, 2, 3, 4, 5};
+ 
+        // Convert Integer stream to int stream using mapToInt
+        int[] primitiveInts = Arrays.stream(integers)
+                                     .mapToInt(Integer::intValue)
+                                     .toArray();
+ 
+        System.out.println(Arrays.toString(primitiveInts));
+    }
+}
+```
+ 
+In this example, `mapToInt(Integer::intValue)` is used to convert the stream of `Integer` objects to a stream of primitive `int` values, which are then collected into an array. The result is an array `[1, 2, 3, 4, 5]`.	 
+===========================================================================================================================================================	 
+10.write a program to print list of 100 numbers where multiple of 3 should be print as fizz, multiple of 5 should be print as buzz and multiple of 3 and 5 print as fizzbuzz
+Code:
+package basics;
+
+import java.util.Scanner;
+
+public class FizzBuzz {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter The Number:");
+        int n = sc.nextInt();
+
+        for (int i=1; i<=n; i++) {
+
+            if (i%3==0 && i%5==0) {
+                System.out.print("FizzBuzz");
+            } else if(i%3==0) {
+                System.out.print("Fizz");
+            } else if (i%5==0) {
+                System.out.print("Buzz");
+            }
+            else {
+                System.out.print(i);
+            }
+            System.out.print(","+" ");
+        }
+    }
+}
+
+==============Set2==============
+1) Which java version you have worked on?
+Ans : I have worked on Java 8.
+
+2) Can we have multiple java classes in one java file?
+Ans : Yes, We can have multiple java classes in same file where only one Java class can be public and file name must be match the public class name.
+however, you can add include multiple non-public classes or interface in the same source file.
+
+3) What is Javac?
+Ans : It is Java compiler. which generate the Java byte-code(.class file). that can be executed by JVM.
+compiler will convert Java source code (.java file) to byteCode(.class file).
+eg. javac MyProgram.java
+
+4) Can we run java code without Javac command from Java 11?
+Ans: Yes, Starting from java 11, you can run java source code directly using the java Myprogram.java command.
+
+5) what is classpath?
+Ans: CLASSPATH is actually an environment variable in Java, and tells Java applications and the Java Virtual Machine (JVM) where to find the libraries of classes.
+
+6) What is Tdd & BDD? 
+Ans : TDD is test driven development which means first write the test cases, cover all corner cases and accordinlg develop the code.
+      BDD is behavioural test driven development. Any Business people can easily understand the Cucumber testcases.
+	  
+7) Have you written the test cases?
+Ans : Yes I have wrote Junit, Mockito and Cucumber test cases. Cucumber TCs are behavioural based test cases.
+
+8) Which version of Junit you have worked on, have you used Junit5?
+Ans : Yes, I have used Junit5 as well. 
+
+9) What is the difference between RabbitMQ & Kafka?
+Ans : Kafka is Asyncronus messagesing system in dustributted manner. I have used WebMQ earlier. WebMQ and rebbitMq are mainly used for peer for peer messaging system. 
+Kafka has other benefits also like scalibility, fault tolerance etc. 
+
+10) What is difference between fetch and pull in git commands?
+Ans :
+git pull:  Pull command used to fetch all the changes which are there in marster branch to our local repository. 
+It automatically fetches the changes from the remote repository and merges them into your local branch.
+It's a combination of git fetch and git merge.
+git fetch:
+It fetches the changes from the remote repository but doesn't automatically merge them into your local branch.
+The fetched changes are stored in remote-tracking branches (e.g., origin/master).
+git fetch does not modify your local branch; it updates the remote-tracking branches.
+
+11)In spring boot if we don't won't to use tomcat, can we do that?
+Yes, we can change server using adding jetty or undertow server dependency in pom.xml or build.gradle file.
+
+12) What is the difference between @Controller & @Component 
+Ans : Both are stereotype spring annotations which are used to create spring beans. This annotations are used to just segregate the responsibility of each beans. 
+@Controller bean is responsible to handle only front end requests. Whereas @Component is simple spring bean which can be used for specific functionality.
+
+@Component :
+It is a general-purpose annotation that indicates that the class is a Spring bean and should be picked up by component scanning.
+Usage:
+It is commonly used when you want to define a general-purpose Spring bean without any specific role.
+@Controller:
+It is specifically designed for classes that handle HTTP requests in a Spring MVC application.
+Usage:
+It is used when you want to define a class responsible for processing and handling HTTP requests in a Spring MVC web application.
+
+13)Most challenging task you have faced in your career till now.
+I had picked one story card related to performance load testing. That time I was facing of challenges related VM, data preparation in start. I have learned about Azure VM set up and resolved that, secondly, before teams members was preparing data manually using excel. But I have written Java code for preparation of data and started automation for data preparation. 
+then when I have started run the script. that time I seen memory and CPU utilization for particular pod touching to 100% and pod was restarting again and again. then I have started refactoring of code. In code cognitive complexity was more. I have re-factor if else statement properly. reduced variable creation if not required. and lastly added more pods. Then my expected load able to handle my code and infrastructure.
+After that we understand code base is going big, refactoring is required to understand and maintain the code. 
+
+===============================Set3======================================
+
+1.Why we are using javac, java commands
+    -- javac comand used for compiling the java program
+    -- java command used for run the program
+
+2. why we use public static void main
+Ans:
+i).public: public keyword is an access modifier that represents visibility. It means it is visible to all. So that JVM (Java Virtual Machine) can execute the method from anywhere. 
+
+ii).static : The static keyword in Java is mainly used for memory management.
+If we declare any method as static, it is known as the static method. The core advantage of the static method is that there is no need to create an object to invoke the static method. The main() method is executed by the JVM, so it doesn't require creating an object to invoke 
+the main() method. So, it saves memory. 
+
+iii). void: void is the return type of the method. It means it doesn't return any value. 
+ 
+iv).main(): main represents the starting point for JVM to start execution of a Java program. Without the main() method, JVM will not execute the program. 
+It is a default signature which is predefined in the JVM.
+ 
+v).String[] args or String args[] : it is used for command line argument. It is an array of elements of type String. agrs[] is the array name, and it is of String type
+ 
+vi).System.out.println(): It is used to print statement. System is a class, out is an object of the PrintStream class, println() is a method of the PrintStream class. Usually, a method is invoked by objectname.methodname(). But we cannot create the object to PrintStream class directly. So, Java provides an
+alternative way to create the object of PrintStream class that is System.out. The out is an instance of the System class and is of type PrintStream.
+
+
+3. what is difference between abstract and interface which will be used in which scenarios
+     -- Abstract class can be used if we want to have both concrete methods and abstract methods
+     -- if we want to construct object using constructor in this scenario, we will use abstract
+     -- we can add new abstract methods and partial abstraction achievedg
+
+     -- Interface will have pure abstract methods
+     -- if we add new methods then those should be implemented classes
+     -- pure abstraction achieved through interface
+	 
+4. what is default methods
+Ans: to achieve backward compatibility introduced default methods in interfaces.
+
+Default method feature introduced in java 8. Default methods allow interfaces to have method implementation,  proving a way to add new methods to interfaces without braking backward compatibility with existing classes that implement those interfaces.
+eg. one interface is used in 100 classes. if you add one method in interface, you have to add implementation of this method in all 100 class. thats why default method can full fill our exception. whatever class required this default method it can use same or use there own method functionality.
+
+5. what is functional interface and how we can make sure it should be functional interface
+Ans:
+    -- to support functional programing through lambda expression
+    -- by adding @FunctionInterface annotation we can make sure interface always contain one abstract method
+	
+A functional interface in Java is an interface that contains only one abstract method. Functional interfaces are a key concept in Java's functional programming features and are closely associated with the introduction of lambda expressions in Java 8.
+ 
+Here are the characteristics of a functional interface:
+ 
+i). **Single Abstract Method (SAM):**
+   - A functional interface should have only one abstract method (a method without a default implementation).
+   - It can have multiple default or static methods, but it must have exactly one abstract method.
+ 
+ii). **`@FunctionalInterface` Annotation:**
+   - While not strictly required, it's a good practice to use the `@FunctionalInterface` annotation on an interface to explicitly indicate its functional nature.
+   - The annotation helps prevent accidental addition of extra abstract methods, and the compiler will generate an error if more than one abstract method is added.
+ 
+   ```java
+   @FunctionalInterface
+   interface MyFunctionalInterface {
+       void myMethod(); // Single abstract method
+ 
+       default void anotherMethod() {
+           // Default method
+       }
+ 
+       static void staticMethod() {
+           // Static method
+       }
+   }
+   ```
+ 
+iii). **Lambda Expressions:**
+   - Functional interfaces are designed to be used with lambda expressions and method references, enabling concise and expressive code.
+ 
+   ```java
+   MyFunctionalInterface myFunc = () -> {
+       // Lambda expression implementing the abstract method
+       System.out.println("My Method Implementation");
+   };
+   ```
+ 
+iv). **Built-in Functional Interfaces:**
+   - Java provides a set of built-in functional interfaces in the `java.util.function` package, such as `Function`, `Predicate`, and `Consumer`.
+   - These interfaces are annotated with `@FunctionalInterface`.
+ 
+   ```java
+   import java.util.function.Predicate;
+ 
+   public class Example {
+       public static void main(String[] args) {
+           Predicate<String> isNotEmpty = s -> !s.isEmpty();
+       }
+   }
+   ```
+ 
+By following these principles, you ensure that an interface is a functional interface, making it suitable for use with lambda expressions and enabling functional programming paradigms in your Java code. The `@FunctionalInterface` annotation is a helpful tool to explicitly declare your intention and catch unintended additions of abstract methods.
+
+6. What is fictional programming?
+Its a way of writing a compute program that focuses on using fictions to perform task and solve them. In functional programming, function are first class citizens, meaning they can passed as argument to other function, returned as values from other function, and assigned to variable.
+
+Functional programming is a way of writing computer programs that focuses on using functions to perform tasks and solve problems. In functional programming:
+ 
+i). **Functions are Key:**
+   - Programs are made up of small, independent functions that take input and produce output.
+ 
+ii). **No Side Effects:**
+   - Functions avoid changing data outside of themselves, making the code predictable and easier to understand.
+ 
+iii). **Immutable Data:**
+   - Data, once created, cannot be changed. Instead of modifying existing data, new data is created.
+ 
+iv). **Declarative Style:**
+   - Code expresses "what" needs to be done rather than "how" it should be done.
+ 
+v). **Higher-Order Functions:**
+   - Functions can take other functions as parameters or return them, providing flexibility and abstraction.
+ 
+Functional programming helps in writing clear, concise, and maintainable code. It's like using building blocks (functions) to construct programs, making it easier to understand and reason about.
+
+
+7. what is difference between Post and Put
+     -- Post is used for creating resources
+     -- if we sent same request again it will create duplicate record
+     -- Put is used for updating resource
+    -- if resource is not available then it will create and update
+	
+
+8. what are the challenges you have faced how did you resolved	
+I had picked one story card related to performance load testing. That time I was facing of challenges related VM, data preparation in start. I have learned about Azure VM set up and resolved that, secondly, before teams members was preparing data manually using excel. But I have written Java code for preparation of data and started automation for data preparation. 
+then when I have started run the script. that time I seen memory and CPU utilization for particular pod touching to 100% and pod was restarting again and again. then I have started refactoring of code. In code cognitive complexity was more. I have re-factor if else statement properly. reduced variable creation if not required. and lastly added more pods. Then my expected load able to handle my code and infrastructure.
+After that we understand code base is going big, refactoring is required to understand and maintain the code. 
+
+9. what is difference between rebase and merge
+   -- merge is used to combine feature branch with master where commits will be improper order.(clear history)
+  -- rebase is little risky which new branch changes will be merged to master
+  -- Use rebase when you want a cleaner, more linear history. It's like saying, "Let's make it look like we worked on this one after the other, even though we actually worked in paralle
+  
+10. what is pod and service
+   -- Pod is like server where we can deploy our changes using docker image
+   -- Service used for communication between pods in kubernetes
+
+11. what is component scan 
+   -- to identify beans in spring boot application which beans need to be scanned
+@Component scan: helps spring find and manage these beans across your code base without explicitly listing them.
+@ComponentScan => instructs springboot to scan for other components, configuration and services in the same package(and its sub packages) where the main class is located.
+
+12. what is stereotype
+   -- kind of component scan create beans. 
+eg. 
+Stereotype is a way of categorizing and defining components in a spring application. By using stereotype annotations, you can provide hints to spring about the roles and responsibility of your classes, making it easier for the framework to manage and organize your application component.
+i) @Component:(generic-stereotype) It indicate that the annotated class is a spring bean(object) and should be picked up by component scanning.
+ii)@Controller: It indicates that the annotated class is responsible for handling HTTP request and generating responses in we application.
+iii)@Service: It indicates that the annotated class contained business logic or perform services for the application.
+iv)@Repository:It indicates that the annotated class is responsible for the data access, such as interacting with databases or other external data sources.
+v) @Configuration: It indicates that the annotated class contains bean definitions or configuration settings for the application context.   
+
+13. what is mock bean
+   -- to mock dependent class of service we will use mock bean
+In SpringBoot, @MockBean is a annotation used for creating mock object of beans when writing unit test. It replaces real beans with mock implementation.
+
+14. write a program to print list of 100 numbers where multiple of 3 should be print as fizz, multiple of 5 should be print as buzz and multiple of 3 and 5 print as fizzbuzz
+  --  for (int i=0;i<100;i++)
+       {
+          if(i%3==0&& i%5==0)
+               System.out.println("fizzbuzz");
+         if(i%3==0)
+           System.out.println("fizz");
+        else if (i%5==0)       
+            System.out.println("buzz");
+        else         
+          System.out.println(""+ i);
+}
+15. Resume specific questions whatever we have mentioned  
+
+================================================================Garima================
+1. Intro
+2. Previous experience and project details
+
+3. What is use of classpath in java?
+- CLASSPATH is actually an environment variable in Java, and tells Java applications and the Java Virtual Machine (JVM) where to find the libraries of classes.
+
+4. Some new java 8 features.
+
+default and static methods in Interfaces
+Functional Interfaces and Lambda Expressions
+Java Stream API
+Java Time API
+Collection API improvements
+Concurrency API improvements
+Java IO improvements
+
+i)Default Method in interfaces:(Facilitates Backward Compatibility)
+Java 8 allowed the addition of default and static methods in interfaces. Default methods allowing developers to add new methods to interfaces without breaking the classes implementing these interfaces. This feature supports interfaces without requiring changes in implementing classes.
+eg. jab bohot sare classes particular interface ka impplimentation dete ho. if one abstract method ham interface me add kare toh uska implimenttion sare class me dena padega if not required also. karke default or static method java 8 me interface me use kiya gaya hai.
+
+ii)Functional Interfaces and Lambda Expressions :
+Functional Interfaces:-
+Functional interfaces have a single abstract method and can be used with lambda expression.
+Examples like Runnable, Comparator
+'@FuctionalInterfaces' annotation ensures that an interface can have only one abstract method.
+**)Lambda Expressions:
+It is a concise way to represent an anonymous function(a function without name). It provides a clear and more readable way to write anonymous  method or function, especially when working with functional interfaces.
+a)Syntax: arrow '->' and body.
+(parameter) -> expression
+or 
+(parameter) ->{ statement; }
+b)Functional Interfaces: 
+Lambda expression are primarily used with functional interfaces, which are interfaces with a single abstract method. The lambda expression provides a concise way to implement that single method.
+eg. interface MyFuctionalInterface {
+	void myMethod(int x);
+}
+//Using a lambda expression
+MyFuctionalInterface myFunc = (x) -> System.out.println(x);
+c) Shorter Syntax:-
+Lambda Expression reduce boilerplate code and provide a more compact syntax compared to traditional anonymous inner classes.
+eg.
+//Traditional anonymous inner class
+Runnable runnable = new Runnable() {
+	public void run() {
+		System.out.println("Hello");
+	}
+};
+
+//Lambda expression equivalent Runnable runnableLamda = () -> System.out.println("Hello")
+ 
+d) Parameters and Type Interface :
+Lambda expression can have zero or more parameters. If there is a single parameter, parentheses are optional. Type inference allows the compiler to determine the types of parameters.
+eg.
+//Lambda expression with parameters
+(a,b) -> a+b;
+
+//Lambda expression with a single parameter
+x -> x*x*
+
+e) Lambda expression facilitate a more functional programming style in java, allowing the us of higher-order functions, method references, and streamline code.
+eg.
+List<String> names = Arrays.asList("Aman", "Bhushan", "Chetan");
+
+//Using lambda expression for sorting 
+names.sort((s1,s2) -> s1.compareTo(s2));
+
+//Using method reference for sorting
+name.sort(String :: comapareTo);
+
+Lambda expression play a crucial role in making Java more expressive and supporting functional programming paradigm introduced in jJava 8. They are particularly useful when working with the streams API, the collection framework, and other functional interfaces. 
+
+Q5. Scenario based questions like - if you need to save some non duplicate elements which collection would you prefer?
+Ans: Set , Map
+
+Q6. Difference between Spring and Springboot. Why Springboot?
+
+The key difference or key feature of Spring is dependency injection and for spring boot it's autoconfiguration,
+with the help of Spring Boot Framework developers can reduce development time, Developer Effort, and increase productivity
+
+Spring:**
+
+1. **Framework:**
+   - Spring is a comprehensive framework for building enterprise Java applications.
+2. **Configuration:**
+   - Configuration in Spring often involves XML-based or Java-based configuration files.
+   - Setting up a Spring application may require more manual configuration and boilerplate code.
+3. **Flexibility:**
+   - Spring is highly flexible and modular, allowing developers to choose the components they need for their application.
+4. **Learning Curve:**
+   - Due to its extensive features and flexibility, Spring has a high learning curve for beginners.   
+
+**Spring Boot:**   
+1. **Microservices and Convention over Configuration:**
+   - Spring Boot is designed for building microservices and follows the "convention over configuration" philosophy.   
+      COC- It is a software design paradigm(image,prototype) that emphasizes reducing the need of manual configuration and  boilerplate code by relying on sensible defaults and conventions.
+2. **Embedded Servers:**
+   - Spring Boot includes embedded servers like Tomcat, Jetty, or Undertow, eliminating the need for external server configuration.
+ 
+3. **Auto-Configuration:**
+   - Spring Boot introduces auto-configuration, which automatically configures the application based on the dependencies present in the classpath.
+   - Developers can still override auto-configurations if needed.
+
+ 
+**Why Spring Boot:**
+ 
+1. **Rapid Development:**
+   - Spring Boot accelerates development by providing defaults, conventions, and a set of pre-built templates.
+  
+2. **Reduced Configuration:**
+   - With sensible defaults and auto-configuration, developers need to write less configuration code.
+ 
+3. **Microservices Architecture:**
+   - It is well-suited for building microservices and simplifies the development and deployment of microservices.
+
+4. **Built-in Server:**
+   - Spring Boot includes an embedded server, allowing developers to run applications without the need for external server setup.   
+   
+
+Q7.Autowiring  
+Ans: 
+@autowired => is used to automatically wire up dependencies in your code. When you use @Autowired on a field, spring boot looks for a bean of the same type and inject it into that field.
+Eg. if you have a class Car that needs a Engine dependency, you can use @Autowired on the Engine field within the Car class. Spring Boot will search for a bean of type Engine and inject it into the Car class
+
+(Spring boot autowired is the feature of the spring boot framework, which was used to enable us to inject the dependency object implicitly.
+It is used in setter or in constructor injection internally. Autowired is not used in string values or in primitive injection;
+spring boot autowired requires less code because we have no need to write the code while injecting dependency explicitly)
+
+Q8.Difference between setter method for dependency injection and construction based dependency injection?
+a)Constructor-based Injection :- Constructor injection involves injecting dependencies through a class constructor. 
+when to use- when dependencies are mandatory and must be available for an object to function properly upon creation. It promotes immutability, as dependencies can be marked as 'final', ensuring  they are set once during object creation.
+Eg.
+@Service
+public class MyService{
+	
+	public final MyRepository repository;
+	
+	//Constructor Injection
+	@Autowired
+	public MyService(MyRepository repository) {
+	this.repository = repository
+	}
+	
+	//Business logic using repository
+	//....
+}
+
+b)Setter Injection: setter injection involves injecting dependencies through setter methods of a class. This approach allows flexibility as dependencies can be set or changed after the object has been created.
+when to use- use setter injection when a dependency is optional or when dependencies can change during the object is created.
+Eg. 
+@Service
+private class MyService {
+	private MyRepository repository;
+	
+	
+	//setter Injection
+	@Autowired
+	public void setRepository (MyRepository repository) {
+		this.repository = repository;
+	}
+	
+	// Business logic using repository
+	//...
+}   
+
+c) Field Injection: Field injection directly injects dependencies into class field using annotations. While convenient, it can sometimes leads to less testable code due to direct field access.
+when to use- Use field injection when working with framework like spring Boot where auto-wiring happens through annotations. Convenient for rapid prototyping or simple cases where testability might not be primary concerns.
+eg.
+public class MyService {
+	@Autowired
+	private MyRepository repository;
+	
+	// Business logic using repository.
+	//...
+}
+
+Q8. Anotations for Rest Web services.
+@GetMapping
+@PostMapping
+@PutMapping
+@PatchMapping
+@RequestMapping
+Ans: 
+i)@RequestMapping:- (can be used with GET,POST,PUT and may other request methods using the method attributes on the annotation)
+Purpose: General-purpose annotation that can handle any HTTP method(GET,POST,PUT,PATCH, DELETE and any HTTP method).
+         This annotation can be used both at the class and at the method level.
+eg.
+@RequestMapping(value = "/example", method = RequestMapping.DELETE)
+public String deleteExample() {
+}
+or(class level)
+@RestController
+@Api(value = "This controller is to run generic Jobs")
+@RequestMapping(value = "hlcstocks/v1")
+public class StockGenericController { 
+}
+
+ii)@GetMapping:- (is only an extension of @RequestMapping with GET method which helps you to improve on clarity on request)
+Purpose: Handle HTTP GET request
+UseCase: Retrieving data or resources.
+Example: Displaying a page, fetching information.
+@GetMapping("/example")
+public String getExample() {
+
+}
+
+iii) @PostMapping:
+Purpose: Handles HTTP POST requests.
+UseCase: Creating a new resources.
+Example: Submitting a form to create a new record.
+
+@PostMapping(value = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<Object> extractAndStoreGenericSupplyData(@RequestBody GenericSupplierDetails genericSupplierDetails) throws HlcStockExtractionException, Exception {
+       
+	   ResponseEntity<Object> response;
+	   Future<Boolean> result = null;
+	          result = stockGenericExtractionService.genericExtraction(genericSupplierDetails);
+        if (result.get()) {
+            response = new ResponseEntity<>(
+                    new ResponseMessage("Request to extract GenericSupplyExtractor Stocks has been accepted"),
+                    HttpStatus.ACCEPTED);
+        } else {
+            response = new ResponseEntity<>(
+                    new ResponseMessage("Request to extract GenericSupplyExtractor IAA is failed"),
+                    HttpStatus.BAD_REQUEST);
+        }
+        return response;
+		
+		
+		}
+		
+iv) @PutMapping:
+Purpose: Handle HTTP PUT requests.
+UseCase: Updating existing resource or creating if not exists.
+Example: Updating a resources with a complete  representation.
+
+@PutMapping("/example/{id}")
+public ResponseEntity<Object> putExample(@PathVariable(value = "id") final String id,
+            @RequestParam(value = "countryCode", required = true) String countryCode) {
+			
+	return new ResponseEntity<>(productAvailability, HttpStatus.OK);
+} 
+
+v) @PatchMapping
+Purpose: Handles HTTP PATCH request
+UseCase: Partially updating existing resources.
+Example: Updating specific fields of a resources.
+
+@PatchMapping("/example/{id}")
+public String patchExample(@PathVariable Long id) {
+
+}
+
+Q9. Difference between Controller and Rest Controller.
+(@Controller is used to mark classes as Spring MVC Controller. @RestController annotation is a special controller used in RESTful Web services,
+and it's the combination of @Controller and @ResponseBody annotation.
+It is a specialized version of @Component annotation.)
+
+In Spring MVC, Both annotations is used to define classes as controller,and responsible for handling HTTP requests and returning appropriate responses.   
+
+@Controller:- (used for map of the model object to view or templates and make it human readable)
+ResponseType: it is used for traditional web application where controller return views (HTML pages)  
+View: it is suitable for application where primary goal is to render server-side views.
+Serialization: it us relies on server-side templates to render views.
+
+@RestController:
+it is combination of 2 annotation @Controller and @ResponseBody. It return data directly, typically as JSON or XML, instead of rendering views.
+It is used for RESTful API.
+
+Q10. What is Rest API(Representational state transfer) (Application programming Interface)
+Ans:
+A REST API is a way for different software systems to communicate over the Internet. It follows specific rules like using standard web addresses (URLs) and standard HTTP methods (like GET for fetching data or POST for creating data) and exchange data in a formate like JSON. 
+
+Eg. It's like a menu for a computer, telling it what to do and what information to give back. Think of it like ordering food online – you choose what you want (like a book or a user profile), and the server (restaurant) gives you the data you asked for. REST APIs are like a universal language for computers to understand and share information.
+
+Q11. Benefits of MongoDB. Difference between NoSQL and SQL.
+
+Flexible document schemas.
+Widely supported and code-native data access.
+Change-friendly design.
+Powerful querying and analytics.
+Easy horizontal scale-out with sharding.
+Simple installation.
+Cost-effective.
+
+Both SQL and NoSQL Databases have their set of advantages and disadvantages.
+SQL databases can be considered when you are looking for data consistency, reliability, integrity, and when the data is structured.
+NoSQL databases are a much better option if the data is large, semi-structured, or unstructured and you are looking for faster storage and retrieval of data.
+
+
+12. Difference between Git fetch and Git pull.
+Ans: git pull:  Pull command used to fetch all the changes which are there in marster branch to our local repository. 
+It automatically fetches the changes from the remote repository and merges them into your local branch.
+It's a combination of git fetch and git merge.
+git fetch:
+It fetches the changes from the remote repository but doesn't automatically merge them into your local branch.
+The fetched changes are stored in remote-tracking branches (e.g., origin/master).
+git fetch does not modify your local branch; it updates the remote-tracking branches.
+
+
+13. Difference between rebase and merge
+Ans:
+merge is used to combine feature branch with master.
+- Git merge is a command that allows you to merge branches from Git.
+- Git rebase is a command that allows developers to integrate changes from one branch to another.
+In Git Merge logs will be showing the complete history of the merging of commits.
+
+14. why you will choose a lambda/API gateway over other container solutions.
+(I have to read)
+
+===============================================================Bhavani======================
+Q1. Introduction 
+Ans: Check Above
+Q2. What is polymorphism
+Ans: Check Above
+Q4. what is collections
+Ans: Check Above
+Q8. difference between spring and springboot
+Ans: Check Above
+10. difference between @controller and @restcontroller
+Ans: Check Above
+12. where we use @autowired
+Ans: Check Above
+13. what is classpath
+Ans: Check Above
+	 
+
+Q3. what is inheritance(IS-A)
+Ans: In which one class acquires all the properties and behaviors of the parent class. we can say child is extending all properties and behaviors of parent class.
+
+Q5. difference between list and arraylist
+Ans: 
+
+List	                                                         ArrayList
+1.List is an interface	                                  1.ArrayList is a class
+2.List interface extends the Collection framework	      2.ArrayList implements List interface
+3.List cannot be instantiated.	                          3.ArrayList can be instantiated.
+                                                          4.Internally, 'ArrayList' uses a dynamic array to store elements(object). 
+                                                          5.'ArryaList' automatically adjusts its size when elements are added or removed.
+                                                             (Dynamically grows and shrink)
+
+Q6. explain about streams
+Ans:
+Stream API:
+The Java Stream API is an abstract layer that implements the pipeline processing of the data. 
+
+Streams provide a new way to handle a collections in Java. They allow functional style operation on collection, making it easier to perform bulk operations like filter, map, reduce and collect.
+
+Java Stream holds two different types of operations that are:
+
+Intermediate operations: Intermediate operations are the operations that return a stream so that the user can chain various intermediate operations without using semicolons, as we do in other programming languages like Scala.
+eg. map,filter,distinct,sorted.
+
+Terminal operations: The terminal operations are the operations that are mainly void and null, and if not null, these operations return a non-stream as a result.
+eg. min, max, sum, count, average, reduce, collect, forEach.
+
+Q7. what is lambda expression
+Lambda expression allow you to write concise and efficient code.
+Lambda expression enables functional programming by allowing the use of anonymous function.
+They simplify code, especially when working with collections and Streams API 
+lambda expressions enables the use of functional programming concepts in java.
+
+Q9.what are the benefits and why we use spring
+Ans:
+
+Q11. What is @configuration
+Ans: it is used to declare a class as a source of bean definitions. It tells Spring that the class contains one or more bean definitions and should be processed to generate bean definition during the application context initialization.
+
+### Key Points:
+ 
+1. **Bean Configuration:**
+   - Classes annotated with `@Configuration` are typically used to define beans in Spring applications.
+ 
+2. **Java-based Configuration:**
+   - `@Configuration` is commonly used in conjunction with Java-based configuration instead of XML configuration files.
+ 
+3. **Annotation-Driven:**
+   - Spring processes classes annotated with `@Configuration` at runtime to create and configure beans.
+ 
+4. **Bean Definition Methods:**
+   - Methods within `@Configuration` classes annotated with `@Bean` are responsible for creating and configuring beans.
+ 
+5. **Programmatic Configuration:**
+   - `@Configuration` provides a programmatic and type-safe way to configure beans and their dependencies.
+ 
+### Example:
+ 
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+ 
+@Configuration
+public class AppConfig {
+ 
+    @Bean
+    public MyService myService() {
+        return new MyServiceImpl();
+    }
+ 
+    @Bean
+    public MyRepository myRepository() {
+        return new MyRepositoryImpl();
+    }
+}
+```
+ 
+In this example:
+ 
+- The `AppConfig` class is annotated with `@Configuration`, indicating that it contains bean definitions.
+- The `myService()` method is annotated with `@Bean`, indicating that it defines a bean of type `MyService`.
+- Similarly, the `myRepository()` method defines a bean of type `MyRepository`.
+ 
+At runtime, Spring processes the `AppConfig` class, creates instances of the beans defined in it, and manages their lifecycle within the application context. The beans can then be injected into other components or accessed programmatically as needed.
+
+Q14. how rest api works
+Ans:-
+Alright, imagine you want to get information from a library, but instead of physically going there, you send a message to the librarian asking for a specific book. The librarian checks the request, finds the book, and sends you the details.
+ 
+In the digital world, a REST API (Representational State Transfer Application Programming Interface) works somewhat like this. It's a way for different computer programs (or apps) to talk to each other over the internet.
+ 
+Here's how it works:
+ 
+1. **Request:** You, as one app, send a message (like "Hey, give me info about this book") to another app that has the information you need.
+ 
+2. **Endpoint:** This message is sent to a specific address, called an "endpoint," which is like a dedicated spot in the digital library for certain types of requests.
+ 
+3. **HTTP Methods:** The type of message you send is important. It could be a "GET" request, which is like asking for information, or a "POST" request, which is like submitting new information.
+ 
+4. **Parameters:** You might include additional details in your request, like asking for a specific book by providing its title or author.
+ 
+5. **Server Response:** The app with the information (the library) gets your request, processes it, and sends back a response. This could be the information you asked for or a confirmation that your new information has been added.
+ 
+6. **HTTP Status Codes:** The response comes with a status code, telling you if everything went well (status code 200) or if there was an issue (status codes like 404 for "not found" or 500 for "server error").
+ 
+So, a REST API is like a conversation between different apps over the internet. One app asks for something specific, the other provides the requested information, and they communicate using standard rules, just like you would ask the librarian for a book in a library.
+
+15. tell about design patterns
+Ans:
+1. **Single Responsibility Principle (SRP):**
+   - **In a nutshell:** Each class should have only one job or responsibility.
+      - **Example:** `MessageSender` class is responsible for sending messages, while `MessageLogger` class handles logging. Each has a single responsibility.
+
+ 
+2. **Open/Closed Principle (OCP):**
+   - **In a nutshell:** Classes should be open for extension but closed for modification.
+      - **Example:** You can add a new message delivery method (extension) without changing the existing code that sends or logs messages.
+ 
+3. **Liskov Substitution Principle (LSP):**
+   - **In a nutshell:** Subtypes must be substitutable for their base types without altering the correctness of the program.
+      - **Example:** If you have a `TextMessage` class (subtype), you can use it wherever a `Message` class (base type) is expected without causing issues.
+ 
+4. **Interface Segregation Principle (ISP):**
+   - **In a nutshell:** A class should not be forced to implement interfaces it doesn't use.
+      - **Example:** Instead of having a massive `MessageService` interface, split it into `MessageSender` and `MessageLogger` interfaces. Classes implement only what they need.
+ 
+5. **Dependency Inversion Principle (DIP):**
+   - **In a nutshell:** High-level modules should not depend on low-level modules. Both should depend on abstractions.
+      - **Example:** `MessageProcessor` depends on abstractions (`MessageSender` and `MessageLogger` interfaces) rather than concrete implementations, allowing flexibility in choosing specific implementations.
+	  
+	  // Single Responsibility Principle (SRP)
+class MessageSender {
+    public void sendMessage(String message) {
+        // send the message
+    }
+}
+ 
+class MessageLogger {
+    public void logMessage(String message) {
+        // log the message
+    }
+}
+ 
+// Open/Closed Principle (OCP)
+interface MessageDelivery {
+    void deliverMessage(String message);
+}
+ 
+class EmailDelivery implements MessageDelivery {
+    public void deliverMessage(String message) {
+        // send message via email
+    }
+}
+ 
+class MessageService {
+    private final MessageDelivery deliveryMethod;
+ 
+    public MessageService(MessageDelivery deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
+    }
+ 
+    public void processMessage(String message) {
+        // additional processing
+        deliveryMethod.deliverMessage(message);
+    }
+}
+ 
+// Liskov Substitution Principle (LSP)
+class TextMessage extends Message {
+    // text-specific properties and methods
+}
+ 
+// Interface Segregation Principle (ISP)
+interface MessageSender {
+    void sendMessage(String message);
+}
+ 
+interface MessageLogger {
+    void logMessage(String message);
+}
+ 
+class SimpleMessageSender implements MessageSender {
+    public void sendMessage(String message) {
+        // send the message
+    }
+}
+ 
+class ConsoleMessageLogger implements MessageLogger {
+    public void logMessage(String message) {
+        // log the message to console
+    }
+}
+ 
+// Dependency Inversion Principle (DIP)
+class MessageProcessor {
+    private final MessageSender sender;
+    private final MessageLogger logger;
+ 
+    public MessageProcessor(MessageSender sender, MessageLogger logger) {
+        this.sender = sender;
+        this.logger = logger;
+    }
+ 
+    public void processMessage(String message) {
+        // additional processing
+        sender.sendMessage(message);
+        logger.logMessage(message);
+    }
+}
+
+Remember, SOLID principles are like guidelines to write code that's flexible, maintainable, and easy to understand. They're tools to help you build robust software.
+
+16. tell about mongobd
+Certainly! Here are some potential interview questions about MongoDB:
+ 
+1. **What is MongoDB?**
+   - MongoDB is a NoSQL database management system that stores data in flexible, JSON-like documents. It is designed to be scalable, flexible, and efficient in handling large amounts of data.
+ 
+2. **Explain the key features of MongoDB.**
+   - Features include document-oriented storage, dynamic schema, horizontal scalability, rich query language, indexing, and support for secondary indexes.
+ 
+3. **How is MongoDB different from traditional relational databases?**
+   - MongoDB is a NoSQL database, while traditional relational databases are SQL-based. MongoDB uses a flexible, document-oriented model instead of tables with rows and columns. It is schema-less and supports horizontal scalability.
+ 
+4. **What is BSON in MongoDB?**
+   - BSON (Binary JSON) is a binary representation of JSON-like documents that MongoDB uses to store data. It extends the JSON model to provide additional data types and to be more efficient for storage and traversal.
+ 
+5. **Explain the concept of a document in MongoDB.**
+   - A document is a basic unit of data in MongoDB, similar to a row in a relational database. It is a JSON-like object with key-value pairs and is used to represent and store data.
+ 
+6. **What is a collection in MongoDB?**
+   - A collection is a group of MongoDB documents. It is similar to a table in relational databases but does not require a predefined schema, allowing flexibility in the types and structures of documents it can contain.
+ 
+7. **How does indexing work in MongoDB?**
+   - MongoDB uses indexes to improve query performance. Indexes can be created on single fields or compound (multiple) fields. They facilitate faster data retrieval by allowing MongoDB to locate documents more efficiently.
+ 
+8. **Explain the sharding concept in MongoDB.**
+   - Sharding is a method used to distribute data across multiple machines. MongoDB automatically divides a collection into smaller chunks called shards, which are distributed across different servers. This enables horizontal scaling and improved performance.
+ 
+9. **What is the role of a replica set in MongoDB?**
+   - A replica set is a group of MongoDB servers that maintain the same data set. It provides data redundancy and high availability by maintaining multiple copies (replicas) of data. If one server fails, another can take over, ensuring continuous operation.
+ 
+10. **How do you perform CRUD operations in MongoDB?**
+    - MongoDB supports CRUD operations: Create (insert), Read (find), Update (update), and Delete (remove). These operations are performed using methods such as `insertOne`, `find`, `updateOne`, and `deleteOne` in the MongoDB API.
+ 
+These questions cover various aspects of MongoDB, from its basic concepts to more advanced features like sharding and replica sets. Prepare for these questions to demonstrate your understanding of MongoDB in an interview setting.
+
+
+Q17. what is kafka consumer and producer
+Ans:
+Cosumer means comsume msg from topic.
+producer means send msg to topic.
+
+Q18.what are all things required to consume messages from kafka?
+Ans:
+
+
+====================================================================================================================================
+
+Q1. what is fictional interface and interface
+Ans: Given
+
+Q2. write fictional interface 
+Ans: Given
+
+Q3. what is difference b/w map and flatmap
+Ans: No
+
+Q4.what is consumer and supplier?
+Ans: 
+
+Q5. Kafka consumer implementation
+Ans: Given
+
+Q6. What is inheritance
+Ans: Given
+
+Q7. convert list into map
+Ans:
+public class ListToMap {
+    public static void main(String[] args) {
+        List<String> myList = Arrays.asList("Apple","Banana","orange","grape");
+        Map<Integer,String> map = myList.stream().collect(Collectors.toMap(x -> myList.indexOf(x), x->x));
+        //.toMap(myList::indexOf, x->x));
+        map.forEach((key, value)-> System.out.println(key+ "->" + value));
+    }
+}
+
+Q8. print this list using Java 8 and removes duplicates. 
+Developer o1 = new Developer();
+        o1.setName("mkyong");
+        o1.addBook("Java 8 in Action");
+        o1.addBook("Spring Boot in Action");
+        o1.addBook("Effective Java (3nd Edition)");
+ 
+        Developer o2 = new Developer();
+        o2.setName("zilap");
+        o2.addBook("Learning Python, 5th Edition");
+        o2.addBook("Effective Java (3nd Edition)");
+ 
+        List<Developer> list = new ArrayList<>();
+        list.add(o1);
+        list.add(o2);
+
+Ans: 
+List<String> distinctList = myList.stream().distinct().collect(Collectors.toList());
+distinctList.forEach(System.out::println) 		

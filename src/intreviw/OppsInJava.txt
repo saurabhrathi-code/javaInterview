@@ -1,0 +1,30 @@
+Q1. What is polymorphism. method overloading and method overriding.
+Polymorphism is a concept in object-oriented programming. Poly means Many and morphism means forms.
+There are two type: 
+Compile Time(method overloading) and runtime(method overriding) polymorphism.
+
+Method Overloading: If a class has multiple methods having same name but different parameters its known as method overloading. The compiler determines which method to call based on method signature. 
+eg. public class Calculator { 
+      public int add(int a, int b) {
+	     return a+b;
+    }
+	
+	public double add(double a, double b) { 
+	     return a+b;
+	}
+}	
+
+Method Overriding: If Child class(subclass) has a same method as declared in the parent class(super class), it is known as method overriding. It allows child class to provide a specialized version of a method defined in its parent class.
+eg. public class Animal {
+       public void makeSound() {
+	      System.out.println("Generic animal sound");
+	   }
+}
+
+public class Dog extends Animal {
+
+    @Override
+    public void makeSound() {
+	   System.out.println("woof! woof!")
+	}
+}

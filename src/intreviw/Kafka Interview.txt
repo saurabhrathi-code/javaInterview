@@ -1,0 +1,21 @@
+Kafka Interview:
+
+1. for publish
+s1- create producer con-fig class with annotation @ Configuration and @EnableKafka
+s2- using @Value annotation we have to pic all properties like bootstrapped address and security related con-fig.
+s3- we have to create two @Bean 1. producerFactory(all con-fig we have to put) and kafka template bean(usning this we will send msg to particular topic) 
+
+
+
+1.classs=> mark as @component
+2.2 fields => kafkaTemplate<String, String> => <topicname, message> & topic name
+@Value => annotation for pick topic name from yml file.  @Value("${pvtStockChangeEvent.kafka.topic.name:#{null}}")
+3. Create publish method  : public boolean publish(Event event)
+4. Convert/parse java object to json string event using => String message = new Gson().toJson(event);
+5. using kafkaTemplate.send(topicname, message) we can publish message.
+
+2. For Listen
+1. for consume
+s1- create producer con-fig class with annotation @ Configuration and @EnableKafka
+s2- using @Value annotation we have to pic all properties like bootstrapped address and security related con-fig.
+

@@ -1,0 +1,20 @@
+1. INTRO:
+Hi, I am Saurabh!
+I have done my graduation in electronics and communication engineering. For the past 2.10 years, I am working into the world of Java development, Mostly in the retail world and I was working with stock-related project.
+I'm skilled in things like Java (the language, not coffee!), Spring Boot (like a turbocharger for Java), Junit (for testing), Kafka (a data streaming tool), Newrelic (Application performance management tool), PagerDuty(Incident Management tool), Maven and Gradle (tools for building code), and I worked on Azure Logic Apps and Azure File Share in Azure Cloud.
+
+2. Brief on previous Project assignment:
+I worked on a retail project, specifically I worked on the stock application.
+As a Java backend developer, my role covered the entire software development life cycle, from coding in Java Spring Boot to testing with JUnit and Cucumber Automation. I used Kafka for event handling, supplier was sending stock related picture using kafka so, I have created listener using  @KafkaListener(topics = "${generic.kafka.topic.extraction}") and This json string msg I was converting into Java object formate using Object Mapper class readValue(supplyString, GenericSupplierDetails.class) method , Gradle for building, and New Relic for performance management. I also handled dashboard and alerts creation for monitoring the application, and incident management using PagerDuty. Additionally, I worked on Azure Logic Apps for scheduling cron jobs and utilized file sharing for data storage. We tracked progress using JIRA and followed an agile methodology. I supported the testing team when they had dependencies on our application.
+
+In previous we were facing Facing the challenge of growing code base, I initiated refactoring efforts. I created utility methods and focused on code reuse, such as developing an object-to-string converter and date-time conversions.
+
+when we talked about achievement, I successfully created numerous dashboards and alerts to monitor the application. I integrated communication channels like mobile phones, Teams, and email, ensuring prompt addressing of issues. I also implemented an escalation policy for on-call personnel to acknowledged issue as every as possible
+
+This experience allowed me to enhance my skills and Working with diverse technologies expanded my knowledge, and this is contributing significantly to my professional growth.
+
+
+Q3. Most challenging task you have faced in your career till now.
+I had picked one story card related to performance load testing. That time I was facing of challenges related VM, data preparation in start. I have learned about Azure VM set up and resolved that, secondly, before teams members was preparing data manually using excel. But I have written Java code for preparation of data and started automation for data preparation. 
+then when I have started run the script. that time I seen memory and CPU utilization for particular pod touching to 100% and pod was restarting again and again. then I have started refactoring of code. In code cognitive complexity was more. I have re-factor if else statement properly. reduced variable creation if not required. and lastly added more pods. Then my expected load able to handle my code and infrastructure.
+After that we understand code base is going big, refactoring is required to understand and maintain the code. 

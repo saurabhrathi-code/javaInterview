@@ -1,0 +1,567 @@
+Introduce Yourself
+I am saurabh, 2.9 year experienced engineer with strong background in software development. 
+I am currently working in a banking domain.
+
+
+================================================
+core java-
+
+Q1.what is platform independent in java ?
+you can compile your program on one machine and you can run your program on multiple machine.
+like example. you can compile your program on windows machine where your Java file gets converted into .class file  and as JVM installed on Linux or mac OS so 
+you can take .class file from windows machine and run on mac or Linux machine.(Write Once, run anywhere)
+java platform independence means that once you write code in java, it can run on any device or operating system without changes.
+This happens because of the Java compiler, Java compiler translate java code into a universal format called byteCode. This byteCode
+can be executed on any system that has a JVM installed, This byte code is portable/versatile and platform independent.
+
+Q2. Diff b/w  JDK JRE JVM
+JVM - it knows as a Java virtual machine. It is responsible for translating Java byteCode into machine specific code that the hardware can execute. The JVM is specific to each platform(Windows, mscOS, Linux, etc). it provide platform independence by enabling Java program to run on any device or operating system that should have compatible JVM installed.
+
+JRE- It is known as Java Runtime Environment. The JRE is is a package of software that includes the JVM, along with libraries and other components required to run Java application but not to develop them. It is what you need to run Java programs. It doesn't contain tools and utilities like compilers needed for Java development. 
+
+JDK - The JDK is known as Java development Kit. The JDK is a bundle of software that includes everything in the JRE, plus development tools such as compilers, 
+debugger, and other tools needed to develop Java applications, If you are planning to write and compile Java code, You will need the JDK. It includes the JRE for running your programs and additional tools to create and debug them.
+
+Summary:
+JVM - execute Java byte-code on a specific platform.
+JRE-  contains the JVM and Library to run Java application.
+JDK - includes the JRE and development tools to write, compile, and debug Java code.
+
+
+Q. Inline Method/Function
+
+An "Inline Method" refers to a programming optimization technique where the compiler replaces a function call with the actual code of the function. This is often done to eliminate the overhead of the a function call, resulting in potential faster execution at the cost of increased code size.
+
+In many modern programming languages, including Java, the decision of inlining methods is handled automatically by the compiler, and developers usually don't explicitly specify which methods should be inlined.
+ 
+However, certain Java compilers and JIT (Just-In-Time) compilers can inline certain methods for performance reasons. For instance, small or simple methods that are frequently called might be candidates for inlining.
+ 
+Here's a conceptual example to illustrate inlining:
+ 
+Consider a simple method in Java:
+ 
+```java
+public int add(int a, int b) {
+    return a + b;
+}
+```
+ 
+Now, imagine a situation where this `add` method is called several times within another method:
+ 
+```java
+public void performCalculations() {
+    int result1 = add(5, 3);
+    int result2 = add(10, 7);
+    // ... more calculations
+}
+```
+ 
+If the `add` method is deemed suitable for inlining by the compiler, it might replace the calls to `add` in the `performCalculations` method with the actual code of the `add` method. So, after inlining, the `performCalculations` method could look something like this:
+ 
+```java
+public void performCalculations() {
+    int result1 = 5 + 3;
+    int result2 = 10 + 7;
+    // ... more calculations
+}
+```
+ 
+This hypothetical scenario demonstrates the idea of inline method optimization, where the function calls to `add` are replaced with the actual code of the `add` method, potentially improving performance by avoiding the overhead of function call mechanisms.
+
+
+Q. What is anonymous Function
+Ans:-
+Absolutely! An anonymous function in Java is a way to create a small, unnamed block of code that can be used like a function. It's sometimes called a lambda expression. Here's a simple example:
+ 
+Suppose you have a list of numbers and you want to perform an operation on each number, like doubling it. In Java, you can use an anonymous function (lambda expression) to define this operation concisely.
+ 
+Let's say you have a list of numbers:
+ 
+java
+import java.util.Arrays;
+import java.util.List;
+ 
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        
+        // Using an anonymous function (lambda expression) to double each number
+        numbers.forEach(number -> {
+            int doubled = number * 2;
+            System.out.println("Doubled: " + doubled);
+        });
+    }
+}
+```
+ 
+In this example:
+- `numbers.forEach()` iterates through each number in the list.
+- `number -> { ... }` is the anonymous function (lambda expression) that takes each number as input.
+- `int doubled = number * 2;` doubles the number.
+- `System.out.println("Doubled: " + doubled);` prints the doubled number.
+ 
+This anonymous function is a concise way to specify an operation without explicitly defining a separate method. It's like saying, "Hey, for each number in the list, do this operation without needing to create a whole new function for it."
+ 
+It's a powerful feature that simplifies code by allowing you to write quick, small functions directly where they're needed, especially when working with collections or performing actions on elements in a straightforward manner.
+
+Q.
+    //Static block will executed when class is loaded in the memory.
+    static {
+        instance = new DateUtils3();
+    }
+
+
+
+Q. Heap and stack
+
+
+
+
+================================= String========================
+Q3. 
+String  s1 = "Sachin"; // literal
+String s2 = new String ("Sachin");
+boolean m1 = s1.equals(s2); // true
+boolean m2 = s1==s2; // false
+what is m1 and m2?
+
+Ans:- 
+
+String  s1 = "Sachin" create a string "Sachin" and strore it in the string pool. Then String s2 = new String ("Sachin") creates a new String object "Sachin" in the heap memory.
+
+s1.equals(s2) => compares the contents of the string, which is same ("Sachin"), it returns true.
+
+s1==s2 :- it compares reference of the strings. In this case, s1 refers to the string in the string string pool, while s2 refers to the new string object in the heap. therefore s2==s1 is false because they reference different object in the memory, even though their content is same.(two different instances)
+
+
+
+=================Garbage Collector/ Memory Management==============
+Q4. Garbage Collector :
+In java we can not get allocate or deallocates memory. It is done automatically by your JVM. So Garbage collection is a mechanism when the object no longer referenced by the program at that stage the garbage collection rns after some frequency. And garbage collector collect your unused object after some certain duration and that object will deleted your your heap memory.  
+
+OR
+
+In Java, the Garbage Collector (GC) is a fundamental part of the Java Virtual Machine (JVM) responsible for automatic memory management. When you create objects in Java, memory is allocated to store them. Over time, some of these objects are no longer needed or accessible by the program.
+ 
+The garbage collector keeps track of these unused objects and frees up the memory they occupy. It identifies and removes objects that are no longer referenced by the program. it allowing that memory to be reused for new objects. This process helps prevent memory leaks and allows developers to focus on writing code without worrying about manually deallocating memory. Essentially, it cleans up unused objects, keeping the memory efficient and available for the program to use.
+
+OR 
+
+In Java, the Garbage Collector (GC) is a fundamental part of the Java Virtual Machine (JVM) responsible for automatic memory management. Its primary task is to automatically reclaim memory that is no longer in use or referenced by any part of the program, thus freeing up memory resources.
+ 
+Here's how it works:
+ 
+1. **Identifying Unused Objects:** The GC constantly monitors the objects created by a Java program. When an object is no longer referenced by any part of the program (i.e., it's unreachable), it becomes a candidate for garbage collection.
+ 
+2. **Mark and Sweep:** The GC uses different algorithms to determine which objects are no longer in use. One common approach is the "Mark and Sweep" algorithm. It traverses all reachable objects starting from known root objects (like global variables or objects in the execution stack), marks them as alive, and then sweeps through memory, deallocating the memory occupied by the unmarked (garbage) objects.
+ 
+3. **Memory Reclamation:** After identifying the unreachable objects, the GC deallocates their memory, making it available for new objects. This process helps prevent memory leaks and allows efficient use of memory resources.
+ 
+4. **Different Garbage Collection Algorithms:** Java offers various GC algorithms (like Serial, Parallel, CMS, G1, etc.), each with its own strengths and trade-offs in terms of throughput, pause times, and efficiency.
+ 
+5. **Tuning and Optimization:** For performance optimization, developers can tune the GC by adjusting parameters to match the application's memory requirements and performance goals. This includes specifying different GC algorithms or adjusting the memory allocation settings.
+ 
+The Garbage Collector in Java automates memory management, relieving developers from explicitly deallocating memory. However, it's essential to understand its behavior and the impact on application performance, especially for large-scale systems where GC behavior can affect performance characteristics.
+
+OR
+
+Imagine your computer has a limited amount of memory, like a backpack with limited space. The Garbage Collector in Java is like a helpful friend who checks your backpack from time to time. When it sees items you're not using anymore, it takes them out to create space for new stuff.
+ 
+Here's how it works:
+ 
+1. **Finding Unused Stuff:** It looks through the things in your backpack (the memory in your computer). If it finds something you're not using anymore, like an old toy you don't play with, it decides to take it out.
+ 
+2. **Clearing Space:** Once it knows what you don't need, it removes those things to make room for new things you might want to put in your backpack later.
+ 
+3. **Helps Prevent Clutter:** This friend keeps your backpack tidy by getting rid of stuff you don't need anymore, so your backpack (memory) doesn't get too full.
+ 
+4. **Different Ways to Tidy Up:** There are different methods this friend uses to keep your backpack organized, like sorting through your things in different ways to make sure it stays tidy.
+ 
+In simple terms, the Garbage Collector helps your computer manage its memory so that it doesn't get cluttered with things you don't need anymore, making room for new things you might need later.
+
+
+Q5. Can I run garbage collection forcefully?
+Yes, in Java, you can suggest or invoke the garbage collector, but you can not forcefully control it with absolute certainly. The "System.gc()" method is used to suggest JVM(java virtual machine) should run the garbage collector. However it important to note that calling this method does not guarantee immediate garbage collection. The decision to actually run the garbage collector ultimately depends on the JVM implementation and its own algorithm for memory management.
+
+
+=================Collection=========================
+Q6. what is the contract b/w equals and hashcode method which is use in collection.
+ans:- if we have two object emp1 and emp2.  emp1.equals(emp2) it return me true. So whenever two object are equals their has code have to be same. But reverse is not true that means whenever two objects haveing same hashcode the equal might return true or might return false. That means whenever two objects are equal then the hashcode have to be exactly same but whenever two object have the same hashcode that does not mean that both object are equal. so this is the contract.
+
+OR
+
+**`equals()` Method**: This method is used to compare the equality of two objects. It's overridden from the `Object` class to provide a specific implementation for comparing the content or fields of objects to check if they are equal. When using collections, especially `HashMap` or `HashSet`, `equals()` is crucial to determine if two objects are considered the same.
+ 
+- **`hashCode()` Method**: This method returns a hash code value for an object. The hash code is an integer that represents an object's memory address or some unique identifier derived from the object's fields. In collections that use hashing, like `HashMap` or `HashSet`, the `hashCode()` method is used to determine the bucket where an object should be stored.
+
+
+The contract between these two methods is crucial:
+- If two objects are equal according to the `equals()` method, they must produce the same hash code when the `hashCode()` method is called on each of them.
+- However, the reverse is not necessarily true: two objects producing the same hash code are not required to be equal according to the `equals()` method. This situation is known as a "hash collision."
+
+
+why?
+The reason why two objects with the same hash code might not be considered equal according to the `equals()` method is because hash codes are not guaranteed to be unique for different objects.
+ 
+The `hashCode()` method generates an integer value based on the object's fields. However, different objects can have the same hash code due to the way hash codes are calculated (for instance, two different strings might produce the same hash code). This creates what's known as a "hash collision."
+ 
+In contrast, the `equals()` method compares the actual content or fields of the objects to determine if they are equal. Due to the potential for hash collisions, objects with the same hash code might not be equal according to their content, which is what `equals()` checks for. Therefore, while equal objects must produce the same hash code, the reverse doesn't hold true—objects with the same hash code might not be equal.
+
+==========================OPPS==============================
+
+Q7. What is difference between abstract class and interface. When you should go for abstract class and when we should go for interfaces.
+Ans:- Abstract class is where you have some abstract method in the class and if that is IS-A relationship between your classes then you can go for abstract class. But if there is certain feature where there is no relationship between the classes then you have to go for the interfaces. And by default all the method in the interface are abstract. But going forward in java 8 there is a feature where you can write default methods in your interfaces.
+So just to summarize you can go for the abstract class when there is IS-A relationship or parental relationship or superclass subclass relationship then go for the abstract class and if there is no such relationship between the objects then you can go for the interface.
+
+OR 
+Abstract classes and interfaces are both used for abstraction in Java, but they have some key differences:
+ 
+- **Abstract Class**:
+  - Can contain both abstract and concrete methods.
+  - Can have member variables (fields).
+  - Allows constructors.
+  - Supports method implementation.
+  - Enables the use of access modifiers.
+  - A class can extend only one abstract class.
+ 
+- **Interface**:
+  - Contains only abstract method signatures (prior to Java 8; default and static methods were introduced later).
+  - Cannot have member variables except for constants.
+  - Doesn’t allow constructors.
+  - Does not contain method implementations (prior to Java 8).
+  - Supports multiple inheritance, as a class can implement multiple interface
+  
+
+*When to use Abstract Class vs. Interface**:
+ 
+- **Abstract Class Usage**:
+  - Use an abstract class when you want to provide a default implementation or shared functionality among subclasses.
+  - When you need to define a common base class for related classes.
+ 
+*Example*:
+Consider an "Animal" hierarchy where you have abstract methods like `eat()` and `sleep()`. An abstract class "Animal" can define default behavior for these methods like "Animal" can sleep and eat but won't provide the specific implementation. Subclasses like "Dog," "Cat," and "Bird" can extend "Animal" and provide their unique implementations for these methods.
+ 
+- **Interface Usage**:
+  - Use interfaces when you want multiple unrelated classes to implement common behaviors without inheritance limitations.
+  - When you need a contract ensuring that classes implement specific methods without providing any implementation details.
+ 
+*Example*:
+Think of a scenario where different types of vehicles implement a "Driveable" interface. Each vehicle (Car, Bicycle, Boat) has its own implementation of the `drive()` method, ensuring they all can be driven but in their own unique ways.
+ 
+In summary, use abstract classes when you have a "is-a" relationship and need to share code among related classes. Use interfaces when you want to define a contract for unrelated classes to implement common behavior.
+has context menu
+ 
+ 
+============================JAVA 8=================================
+Q9. Important feature of Java 8
+1. Lambda Expression:
+Lambda expression allow you to write concise and efficient code.
+Lambda expression enables functional programming by allowing the use of anonymous function.
+They simplify code, especially when working with collections and Streams API 
+lambda expressions enables the use of functional programming concepts in java.
+it allowing the use of functions as method arguments or code as data.
+
+2. Stream API:
+The Java Stream API is an abstract layer that implements the pipeline processing of the data. 
+
+Streams provide a new way to handle a collections in Java. They allow functional style operation on collection, making it easier to perform bulk operations, making it easier to perform bulk operations like filter, map, reduce and collect.
+
+Java Stream holds two different types of operations that are:
+
+Intermediate operations: Intermediate operations are the operations that return a stream so that the user can chain various intermediate operations without using semicolons, as we do in other programming languages like Scala.
+eg. map,filter,distinct,sorted.
+
+Terminal operations: The terminal operations are the operations that are mainly void and null, and if not null, these operations return a non-stream as a result.
+eg. min, max, sum, count, average, reduce, collect, forEach.
+
+3.Default Method in interfaces:(Facilitates Backward Compatibility)
+Java 8 allowed the addition of default and static methods in interfaces. Default methods allowing developers to add new methods to interfaces without breaking the classes implementing these interfaces. This feature supports interfaces without requiring changes in implementing classes.
+
+4. Functional Interface:
+Functional interfaces have a single abstract method and can be used with lambda expression.
+Examples like Runnable, Comparator
+'@FuctionalInterfaces' annotation ensures that an interface can have only one abstract method.
+eg. 
+@FuctionalInterfaces
+interface MyFunction{
+	void doSomething();
+}
+
+where you will use: 
+Stream API Operations: Functional interfaces are essential when working with the Stream API. They allow you to define behaviors for operations like filter(), map(), forEach(), etc., using lambda expressions.
+
+5. Optional Class:-
+Optional is a class introduced to reduce NullPointerExceptions by explicitly specifying that a value might be absent. It encourages better handling of null values, preventing unexpected null pointer exception.
+
+Here are some scenarios where you might use the Optional class:
+1.Return types: When designing methods that may or may not return a value, using Optional as a return type can signal to the caller that the result might be absent. This encourages better handling of potential null values.
+eg.public Optional<String> findNameById(int id) {
+    // If name found, return Optional.of(name), otherwise Optional.empty()
+}
+2.Collections and Streams: When working with collections or Streams, methods like findFirst() or findAny() return an Optional to represent a possibly absent element. This helps avoid null checks.
+eg.Optional<String> result = list.stream().filter(...).findFirst();
+
+OR.
+Eg.
+public class OptionalDemo{
+     psvm() {
+	 
+	 String str = "Saurabh";
+	 Optional<String> optional = Optional.ofNullable(str);
+	 sout("value is" + optional.get()); 
+	 } 
+}
+
+Eg. 
+public class OptionalDemo{
+     psvm() {
+	 
+	 String str = null;
+	 Optional<String> optional = Optional.ofNullable(str);
+	 sout("value is" + optional.get()); 
+	 } 
+}
+//o/p: java.util.NOSuch[]ElementException: no value present.
+
+Eg.
+public class OptionalDemo{
+     psvm() {
+	 
+	 String str = null;
+	 Optional<String> optional = Optional.ofNullable(str);
+	 
+	 if(optional.isPresent()) {
+	 	 sout("value is" + optional.get());
+	 } else {
+	    sout("Value is not present");
+	 }
+	 } 
+}
+//o/p: Value is not present
+Eg. for default value
+public class OptionalDemo{
+     psvm() {
+	 
+	 String str = null;
+	 Optional<String> optional = Optional.ofNullable(str);
+	 
+	 if(optional.isPresent()) {
+	 	 sout("value is" + optional.get());
+	 } else {
+	    String value = optional.orElse("Default");
+	    sout("Value is not present " + value);
+	 }
+	 } 
+} // o/p :Value is not present Default
+
+6. DateTime API
+Ans
+The new Date and Time API (java.time) introduced in Java 8 provides improved handling of date and times, address many issues found in the older 'java.util.Date'  and 'java.util.Calender' classes.
+
+The Date and Time API introduced in Java 8 (located in the `java.time` package) provides a comprehensive set of classes to handle date and time operations in a more flexible, immutable, and thread-safe manner compared to the older `java.util.Date` and `java.util.Calendar` classes.
+ 
+Here's an example illustrating the usage of the Date and Time API:
+ 
+```java
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+ 
+public class DateTimeExample {
+    public static void main(String[] args) {
+        // LocalDate represents a date without time (yyyy-MM-dd)
+        LocalDate currentDate = LocalDate.now();
+        System.out.println("Current Date: " + currentDate);
+ 
+        // LocalTime represents a time without a date (HH:mm:ss)
+        LocalTime currentTime = LocalTime.now();
+        System.out.println("Current Time: " + currentTime);
+ 
+        // LocalDateTime represents both date and time (yyyy-MM-ddTHH:mm:ss)
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("Current Date and Time: " + currentDateTime);
+ 
+        // Parsing date and time using a specific format
+        String dateStr = "2024-01-03";
+        String timeStr = "12:30:45";
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+ 
+        LocalDate parsedDate = LocalDate.parse(dateStr, dateFormatter);
+        LocalTime parsedTime = LocalTime.parse(timeStr, timeFormatter);
+        System.out.println("Parsed Date: " + parsedDate);
+        System.out.println("Parsed Time: " + parsedTime);
+ 
+        // Formatting date and time
+        LocalDateTime dateTimeToFormat = LocalDateTime.of(2023, 5, 15, 10, 30, 0);
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDateTime = dateTimeToFormat.format(customFormatter);
+        System.out.println("Formatted Date and Time: " + formattedDateTime);
+    }
+}
+ 
+This example demonstrates:
+- Creation of `LocalDate`, `LocalTime`, and `LocalDateTime` objects representing the current date, time, and combined date-time.
+- Parsing strings into `LocalDate` and `LocalTime` objects using specific formats.
+- Formatting a `LocalDateTime` object into a custom string representation using a specific format pattern.
+ 
+The `java.time` package provides various classes like `LocalDate`, `LocalTime`, `LocalDateTime`, `Instant`, `Period`, `Duration`, etc., along with methods to perform date arithmetic, time zone handling, parsing, and formatting, making date and time manipulation in Java more straightforward and less error-prone.
+
+diff b/w old and new date time?
+Ans:-
+The Date and Time API introduced in Java 8 (`java.time`) provides a more modern, comprehensive, and user-friendly approach to handling date and time compared to the older `java.util.Date` and `java.util.Calendar` classes. Here are some key differences:
+ 
+1. **Immutability:** The new API classes (`LocalDate`, `LocalTime`, `LocalDateTime`, etc.) are immutable, meaning once created, their values cannot be changed. In contrast, the old `Date` and `Calendar` classes were mutable, leading to potential issues in multithreaded environments.
+ 
+2. **Clarity and Readability:** The new API classes have clearer names that accurately represent the data they hold (e.g., `LocalDate` for a date without time). This enhances code readability and reduces confusion compared to the ambiguous methods in `Date` and `Calendar`.
+ 
+3. **Null Safety:** The `Date` class is prone to `NullPointerExceptions` as it doesn't handle null values well. The Date and Time API includes the `Optional` class to better handle absent values.
+ 
+4. **Time Zone Handling:** The `java.time` API has better support for handling time zones, making it easier to work with different time zones without the complexities and bugs often encountered in `Calendar`.
+ 
+Here's an example illustrating some differences:
+ 
+```java
+import java.util.Calendar;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+ 
+public class DateExample {
+    public static void main(String[] args) {
+        // Old approach using Date and Calendar
+        Date oldDate = new Date(); // Mutable, represents both date and time
+        System.out.println("Old Date and Time: " + oldDate);
+ 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(oldDate);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1; // Month starts from 0
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println("Year: " + year + ", Month: " + month + ", Day: " + day);
+ 
+        // New approach using Java 8 Date and Time API
+        LocalDate newDate = LocalDate.now(); // Immutable, represents date only
+        System.out.println("New Date: " + newDate);
+ 
+        LocalDateTime newDateTime = LocalDateTime.now(); // Immutable, represents date and time
+        System.out.println("New Date and Time: " + newDateTime);
+ 
+        int newYear = newDate.getYear();
+        int newMonth = newDate.getMonthValue();
+        int newDay = newDate.getDayOfMonth();
+        System.out.println("Year: " + newYear + ", Month: " + newMonth + ", Day: " + newDay);
+    }
+}
+```
+ 
+This example demonstrates the creation of `Date` and `Calendar` objects versus the usage of `LocalDate` and `LocalDateTime` objects from the Date and Time API. It also shows the differences in retrieving components like year, month, and day from both approaches. Overall, the new Date and Time API provides more clarity, immutability, and improved functionality compared to the old `Date` and `Calendar` classes.
+
+7. Method References: 
+Method references in Java provide a way to refer to methods or constructors without invoking them explicitly, often used as a shorthand for lambda expressions. There are several types of method references:
+ 
+1. **Reference to a static method**: This references a static method using the `Class::methodName` syntax.
+ 
+   ```java
+   // Example:
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+   numbers.forEach(System.out::println); // Equivalent to: numbers.forEach(num -> System.out.println(num));
+   ```
+ 
+2. **Reference to an instance method of a particular object**: This references an instance method of a particular object using the `object::methodName` syntax.
+ 
+   ```java
+   // Example:
+   String str = "Hello";
+   Function<Integer, Character> charAtFunction = str::charAt;
+   System.out.println(charAtFunction.apply(1)); // Equivalent to: str.charAt(1);
+   ```
+ 
+3. **Reference to an instance method of an arbitrary object of a particular type**: This references an instance method of an object of a specific type using the `Class::methodName` syntax.
+ 
+   ```java
+   // Example:
+   List<String> strings = Arrays.asList("Java", "is", "awesome");
+   strings.sort(String::compareToIgnoreCase); // Equivalent to: strings.sort((s1, s2) -> s1.compareToIgnoreCase(s2));
+   ```
+ 
+4. **Reference to a constructor**: This references a constructor using the `Class::new` syntax.
+ 
+   ```java
+   // Example:
+   Supplier<List<String>> listSupplier = ArrayList::new;
+   List<String> newList = listSupplier.get(); // Equivalent to: new ArrayList<>();
+   ```
+ 
+Method references help simplify code by providing a concise way to refer to methods or constructors, especially when the lambda expression directly calls a method without performing additional operations.
+
+Q10:Explain some of the functional interfaces which are used in Java?
+Ans: There are many functional interfaces that are used in Java. The following are commonly used by the developers.
+
+Function: Function is the most common functional interface out of all. It accepts only one argument and returns a specified result
+
+Consumer: It is the same as Function interface, Consumer is also a functional interface that takes only one argument, and no result is returned by it.
+
+Supplier: Supplier is a type of functional interface in Java that does not accept any argument and still returns the desired result.
+
+Predicate: The type of functional interface in Java that accepts one argument and returns a boolean value is known as Predicate functional interface.
+
+
+Q11.:WAP to return greater 20 from from the list if 10 numbers. 
+Ans: I will use stream here. from list dot stream I will get stream of numbers. Then from stream dot filter method which return true or false predicate. In filter method I will use lambda for writing logic. and then finally I will call collect method use of Collector.toList where I am going to collect the result in the form of list where all the numbers will be greater than 20. This is how i will achieve. 
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Solution8 {
+    public static void main(String[] args) {
+        
+        List<Integer> list = Arrays.asList(12,32,43,65,23,13,15,87,15,18);
+
+        List<Integer> out = list.stream().filter(x -> x>20).collect(Collectors.toList());
+
+        for (int num:out) {
+            System.out.println(num);
+        }
+    }
+}
+
+======================================= Exception Handling in Java  ================================================
+Q1. How do you handle exception in java
+Ans: Handling exception will help to prevent program unexpected termination and it allows developers to handle errors gracefully.
+1. Try-Catch
+whenever we are writting try block compulsorily we should write either catch or finally. try without catch and finally is invalid. and for catch and finally, try block required.
+There is a mechanism called try-catch block. we have to surround code with try block and whenever some exception occurs the catch will be called.
+All exception handling logic we will write in catch block and if in particular part of the code might throw exception then we will write in catch block
+
+2. Using Throws clause :
+Java Throws is used to declare an exception. Throws is used with method signature.
+
+Q2. what is multi catch block?
+Ans: with try block we can write one or more catch block. Each catch block must contain different exception handler. If we have to perform different operation in one block of code and might this throw exception, then we should go for multi catch block. 
+a) At a time only one exception occurs and at a time only one catch block is executed.
+b) All the catch block must be ordered from most specific to most generic. means catch for ArithmaticException must come before catch for exception.  
+
+
+sayad -(jakir) - GE account -- Nagraj  Developer...
+saurabh() - ultimatix
+chandan - EGS allians
+rutuja- anish(GE)
+
+rupmita - ()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

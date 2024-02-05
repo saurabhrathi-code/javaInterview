@@ -1,0 +1,145 @@
+Q1. what is Collection, why we used collection
+In Java, a collection is a framework that provides an architecture to store and manipulate a group of objects. It represents a group of objects, known as elements, and provides various interfaces and classes to perform operations such as insertion, deletion, and traversal.
+
+Why we use collection in Java:
+1.   Dynamic Size:
+   - Collections can dynamically adjust in size, allowing for flexible management of elements that can grow or shrink as needed.
+   array is not dynamically adjust.
+   
+2.   Ease of Use:
+   - Collections provide high-level interfaces (e.g., List, Set, Map) and implementations for common data structures, making it easier for developers to work with complex data scenarios without having to implement data structures from scratch.
+ 
+3.   Efficient Retrieval and Manipulation:**
+   -  Collections offer methods for efficient retrieval and manipulation of elements. For example, lists allow you to access elements by index, sets ensure uniqueness, and maps provide key-value pair storage for fast retrieval.
+   
+4.   Type Safety:
+   - Generics in Java collections provide type safety, ensuring that the type of elements stored is known at compile-time, reducing runtime errors.   
+   
+   
+   Example: 
+i). import java.util.HashSet;
+
+public class SetExample {
+    public static void main(String[] args) {
+
+        HashSet<String> nameSet = new HashSet<>();
+
+        nameSet.add("Alice");
+        nameSet.add("Bob");
+        nameSet.add("Charlie");
+        nameSet.add("Alice"); // duplicates not allowed
+
+        nameSet.remove("Bob");
+
+		//Searching Element
+        boolean containsCharlie = nameSet.contains("Charlie");
+        System.out.println(containsCharlie); //True
+
+        //Enhanced for loop
+        for (String name : nameSet) {
+            System.out.println(name); //  Alice Charlie
+        }
+		
+       //OR The iterator() method is used to find the iterator of the set.
+        // The iterator is used to get the element one by one.
+
+        Iterator iterator = nameSet.iterator();
+        System.out.println("Using Iterator: ");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+ii). import java.util.ArrayList;
+import java.util.Collections;
+
+public class ListExample {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> numberList = new ArrayList<>();
+
+        numberList.add(5);
+        numberList.add(2);
+        numberList.add(8);
+
+        numberList.remove(Integer.valueOf(2));
+
+        // Sorting the list
+        Collections.sort(numberList);
+
+        //Searching element
+        int index = numberList.indexOf(8);
+        System.out.println("index "+index); //index 1
+
+        for (int number : numberList) {
+            System.out.println(number); // 5 8
+        }
+    }
+}
+
+iii) import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+
+        HashMap<String, Integer> ageMap = new HashMap<>();
+
+        ageMap.put("Alice", 25);
+        ageMap.put("Bob", 30);
+        ageMap.put("Charlie", 22);
+
+        ageMap.remove("Bob");
+
+        //Searching by key
+        boolean containsAlice = ageMap.containsKey("Alice");
+        System.out.println(containsAlice); // True
+
+        for (Map.Entry<String, Integer> entry : ageMap.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue()); // Alice:25 Charlie:22
+        }
+    }
+}
+
+Q2. Differnce b/w List ,set, map
+
+		Duplicates			Insertion Order Preserved     Null Values allowed               
+		
+
+List:-  Yes                    Yes and can retrieve        Yes, Multiple null              
+                                   using index                values allowed
+                               
+Set:-   No                     No                          Yes but only once    
+            
+Map:-   Not for keys           No                          Yes but only once for keys,        
+                                                           can have multiple null values
+														   
+Q5. Confusion question on Hash set and Hash map
+
+	        Implements         How Data is Stored          How they implemented internally    Duplicate Elements      Null Element            Iteration
+
+
+			
+HashSet     Set Interface      As values(As object)         As HashMap                             NO                 Only one null element    Can be Iterated
+                                                                                                                                                   
+
+HashMap   	Map Interface 	   As (entry) Key-Value pair    As a Arrays of a Entry<K,V>       Duplicate keys: No      Only one null key and   needs to convert
+                                                             Object                           Duplicate Values: Yes    multiple null values   into set to be 
+                                                                                                                                                 iterated
+																																				 
+Q6. Scenario based questions like - if you need to save some non duplicate elements which collection would you prefer?
+Ans: Set , Map	
+
+
+Q7. difference between list and arraylist
+Ans: 
+
+List	                                                         ArrayList
+1.List is an interface	                                  1.ArrayList is a class
+2.List interface extends the Collection framework	      2.ArrayList implements List interface
+3.List cannot be instantiated.	                          3.ArrayList can be instantiated.
+                                                          4.Internally, 'ArrayList' uses a dynamic array to store elements(object). 
+                                                          5.'ArryaList' automatically adjusts its size when elements are added or removed.
+                                                             (Dynamically grows and shrink)
+																																			 

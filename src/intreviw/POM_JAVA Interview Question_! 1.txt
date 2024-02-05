@@ -1,0 +1,212 @@
+Interview with SHREYAS
+1. INTRO
+2. Brief on previous Project assignment
+3. what is Collection, why we used collection
+4. Differnce b/w List ,set, map
+5. Confusion question on Hash set and Hash map.
+6. o/p question on Hash map and explain the o/p code(Internal working)
+7. What is polymorphism. Method overloading and overrideing.
+8. Interface, abstract, runtime time exception.
+9. Program (You have Two arrays merge them in 3rd array ,
+	 in sorting order, rember duplicates are not allowed)
+10. Program on FizzBuzz- write a program that returns "fizz" if the number is a multiplier of 3, return "buzz" if its multiplier of 5, and return "fizzbuzz" if the number is divisible by both 3 and 5
+
+Anuradha:
+
+1) Which java version you have worked on?
+Ans : I have worked on Java 6 and Java 8.
+2) Can we have multiple java classes in one java file?
+Ans : Yes We can have multiple java classes in same file where only one java class can be public and file name also be same.
+2) What is Javac?
+Ans : It is Java compiler which generate the Java bytecode. 
+3) Can we run java code without Javac command from Java 11?
+Ans: Sorry I am not sure about it. I don't have experinece on Java 11. I need to explore it.
+4) what is classpath?
+Ans : Path used by class loader to identified the location of user define classes and packages. 
+5) What is Tdd & BDD? 
+Ans : TDD is test driven development which means first write the test cases, cover all corner cases and accordinlg develop the code.
+      BDD is behavioural test driven development. Any Business people can easily understand the Cucumber testcases.
+6) Have you written the test cases?
+Ans : Yes I have wrote Junit, Mockito and Cucumber test cases. Cucumber TCs are behavioural based test cases.
+6) Which version of Junit you have worked on, have you used Junit5?
+Ans : Yes, I have used Junit5 as well. 
+7) What is the difference between RabbitMQ & Kafka?
+Ans : Kafka is Asyncronus messagesing system in dustributted manner. I have used WebMQ earlier. WebMQ and rebbitMq are mainly used for peer for peer messaging system. 
+Kafka has other benefits also like scalibility, fault tolerance etc. 
+8) What is difference between fetch and pull in git commands?
+Ans : Pull command used to fetch all the changes which are there in marster branch to our local repository. 
+9) In spring boot if we don't won't to use tomcat, can we do that?
+10) What is the difference between @Controller & @Component 
+Ans : Both are stereotype spring annotations which are used to create spring beans. This annotations are used to just segregate the responsibility of each beans. 
+@Controller bean is responsible to handle only front end requests. Whereas @Component is simple spring bean which can be used for specific functionality.
+11) Write down the java code for the given problem -
+
+   Input : List of numbers between 1 to 100.
+           1) if number is multiple os 3, print "Fizz".
+	   2) if number is multiple os 5, print "Buzz".
+	   3) if number is multiple os 3 & 5, print "FizzBuzz".
+           4) Otherwise, print the number itself.
+
+12) Other questions were related to your resume and projects which you have already worked. Most challenging task you have faced in your career till now.
+ 
+    
+Lavanya:
+
+1.Why we are using javac, java commands
+    -- javac comand used for compiling the java program
+    -- java command use d for run the program
+2. why we need to set classpath
+    -- to identify where jdk,jre is located and look for our customized class or user class
+3. why we use public static void main
+    -- JVM can invoke class without creating object because of static access modifier
+4. what is difference between abstract and interface which will be used in which scenarios
+     -- Abstract class can be used if we want to have both concrete methods and abstract methods
+     -- if we want to construct object using constructor in this scenario, we will use abstract
+     -- we can add new abstract methods and partial abstraction achieved
+
+     -- Interface will have pure abstract methods
+     -- if we add new methods then those should be implemented classes
+     -- pure abstraction achieved through interface
+5. what is default methods
+     -- to achieve backward compatibility introduced default methods in interfaces
+6. what is functional interface and how we can make sure it should be functional interface
+    -- to support functional programing through lambda expression
+    -- by adding @FunctionInterface annotation we can make sure interface always contain one abstract method
+7. what is difference between Post and Put
+     -- Post is used for creating resources
+     -- if we sent same request again it will create duplicate record
+     -- Put is used for updating resource
+    -- if resource is not available then it will create and update
+8. what are the challenges you have faced how did you resolved
+    -- I have explained about one of memory out of error issue
+9. what is difference between rebase and merge
+   -- merge is used to combine feature branch with master where commits will be improper order
+  -- rebase is little risky which new branch changes will be merged to master
+10. what is pod and service
+   -- Pod is like server where we can deploy our changes using docker image
+   -- Service used for communication between pods in kubernetes
+11. what is component scan 
+   -- to identify beans in spring boot application which beans need to be scanned
+12. what is stereotype
+   -- kind of component scan create beans
+13. what is mock bean
+   -- to mock dependent class of service we will use mock bean
+14. write a program to print list of 100 numbers where multiple of 3 should be print as fizz, multiple of 5 should be print as buzz and multiple of 3 and 5 print as fizzbuzz
+  --  for (int i=0;i<100;i++)
+       {
+          if(i%3==0&& i%5==0)
+               System.out.println("fizzbuzz");
+         if(i%3==0)
+           System.out.println("fizz");
+        else if (i%5==0)       
+            System.out.println("buzz");
+        else         
+          System.out.println(""+ i);
+}
+15. Resume specific questions whatever we have mentioned  
+
+
+Garima:
+
+1. Intro
+
+2. Previous experience and project details
+
+3. What is use of classpath in java?
+- CLASSPATH is actually an environment variable in Java, and tells Java applications and the Java Virtual Machine (JVM) where to find the libraries of classes.
+
+4. Some new java 8 features.
+
+default and static methods in Interfaces
+Functional Interfaces and Lambda Expressions
+Java Stream API
+Java Time API
+Collection API improvements
+Concurrency API improvements
+Java IO improvements
+
+5. Scenario based questions like - if you need to save some non duplicate elements which collection would you prefer?
+
+Set , Map
+
+6. Difference between Spring and Springboot. Why Springboot?
+
+The key difference or key feature of Spring is dependency injection and for spring boot it's autoconfiguration,
+with the help of Spring Boot Framework developers can reduce development time, Developer Effort, and increase productivity
+
+7.Autowiring
+
+Spring boot autowired is the feature of the spring boot framework, which was used to enable us to inject the dependency object implicitly.
+It is used in setter or in constructor injection internally. Autowired is not used in string values or in primitive injection;
+spring boot autowired requires less code because we have no need to write the code while injecting dependency explicitly
+
+Difference between setter method for dependency injection and construction based dependency injection?
+
+8. Anotations for Rest Web services.
+@GetMapping
+@PostMapping
+@RequestMapping
+etc
+
+9. Difference between Controller and Rest Controller.
+
+@Controller is used to mark classes as Spring MVC Controller. @RestController annotation is a special controller used in RESTful Web services,
+and it's the combination of @Controller and @ResponseBody annotation.
+It is a specialized version of @Component annotation.
+
+10. Benefits of MongoDB. Difference between NoSQL and SQL.
+
+Flexible document schemas.
+Widely supported and code-native data access.
+Change-friendly design.
+Powerful querying and analytics.
+Easy horizontal scale-out with sharding.
+Simple installation.
+Cost-effective.
+
+Both SQL and NoSQL Databases have their set of advantages and disadvantages.
+SQL databases can be considered when you are looking for data consistency, reliability, integrity, and when the data is structured.
+NoSQL databases are a much better option if the data is large, semi-structured, or unstructured and you are looking for faster storage and retrieval of data.
+
+11. Difference between Git fetch and Git pull.
+- Git Fetch is the command that tells the local repository that there are changes available in the remote repository without bringing the changes into the local repository.
+Git Pull on the other hand brings the copy of the remote directory changes into the local repository.
+
+12. Difference between rebase and merge
+- Git merge is a command that allows you to merge branches from Git.
+ Git rebase is a command that allows developers to integrate changes from one branch to another.
+In Git Merge logs will be showing the complete history of the merging of commits.
+
+13. why you will choose a lambda/API gateway over other container solutions.
+      
+Bhavani : 
+1. Introduction 
+2. What is polymorphism
+3. what is inheritance
+4. what is collections
+5. difference between list and arraylist
+6. explain about streams
+7. what is lambda expression
+8. difference between spring and springboot
+9. what are the benefits and why we use spring
+10. difference between @controller and @restcontroller
+11. What is @configuration
+12. where we use @autowired
+13. what is classpath
+14. how rest api works
+15. tell about design patterns
+16. tell about mongobd
+17. what is kafka consumer and producer
+18. what are all things required to consume messages from kafka
+19. how partitions work in kafka
+20. what is TDD and BDD
+21. which version of junit you have used
+22. difference between git pull and git merge
+23.write a program to print list of 100 numbers where multiple of 3 should be print as fizz, multiple of 5 should be print as buzz and multiple of 3 and 5 print as fizzbuzz otherwise print the number
+
+
+
+
+
+
+

@@ -1,0 +1,369 @@
+Q1.What is dependency Injection and Inversion of Control in Spring 
+Ans: IOC- it will help to create a object and life-cycle(you no need to create, spring will create for you). It take responsibility of creating, configuring and managing object(beans) based in configuring file or annotation. So, if class ask for dependencies(through DI), the IOC container is responsible for fulfilling these requests by creating and providing the required object.
+DI- DI refers to the process of providing dependencies to a class. In Spring, you declare dependencies in your classes, and the framework inject those dependencies into the class during runtime.
+For instance, using annotation like @Autowired, @Inject, constructor or setter based injection. you specify which dependencies a class needs. Spring IOC Container, then, fulfills these dependencies by providing the necessary object.   
+
+Eg. if you have a class Car that needs a Engine dependency, you can use @Autowired on the Engine field within the Car class. Spring Boot will search for a bean of type Engine and inject it into the Car class
+
+Q2. Different types of injection. 
+a)Constructor-based Injection :- Constructor injection involves injecting dependencies through a class constructor. 
+when to use- when dependencies are mandatory and must be available for an object to function properly upon creation. It promotes immutability, as dependencies can be marked as 'final', ensuring  they are set once during object creation.
+Eg.
+@Service
+public class MyService{
+	
+	public final MyRepository repository;
+	
+	//Constructor Injection
+	@Autowired
+	public MyService(MyRepository repository) {
+	this.repository = repository
+	}
+	
+	//Business logic using repository
+	//....
+}
+
+b)Setter Injection: setter injection involves injecting dependencies through setter methods of a class. This approach allows flexibility as dependencies can be set or changed after the object has been created.
+when to use- use setter injection when a dependency is optional or when dependencies can change during the object is created.
+Eg. 
+@Service
+private class MyService {
+	private MyRepository repository;
+	
+	
+	//setter Injection
+	@Autowired
+	public void setRepository (MyRepository repository) {
+		this.repository = repository;
+	}
+	
+	// Business logic using repository
+	//...
+}   
+
+c) Field Injection: Field injection directly injects dependencies into class field using annotations. While convenient, it can sometimes leads to less testable code due to direct field access.
+when to use- Use field injection when working with framework like spring Boot where auto-wiring happens through annotations. Convenient for rapid prototyping or simple cases where testability might not be primary concerns.
+eg.
+public class MyService {
+	@Autowired
+	private MyRepository repository;
+	
+	// Business logic using repository.
+	//...
+}
+
+Q3. what is application context and bean factory in spring
+ans: application context extends from bean factory. both are container but there are few differences bean factory only allows to 
+
+
+Q4. In spring boot if we don't won't to use tomcat, can we do that?
+Yes, we can change server using adding jetty or undertow server dependency in pom.xml or build.gradle file.
+
+Q5. What is the difference between @Controller & @Component 
+Ans : Both are stereotype spring annotations which are used to create spring beans. This annotations are used to just segregate the responsibility of each beans. 
+@Controller bean is responsible to handle only front end requests. Whereas @Component is simple spring bean which can be used for specific functionality.
+
+@Component :
+It is a general-purpose annotation that indicates that the class is a Spring bean and should be picked up by component scanning.
+Usage:
+It is commonly used when you want to define a general-purpose Spring bean without any specific role.
+@Controller:
+It is specifically designed for classes that handle HTTP requests in a Spring MVC application.
+Usage:
+It is used when you want to define a class responsible for processing and handling HTTP requests in a Spring MVC web application.
+
+Q6. what is difference between Post and Put
+     -- Post is used for creating resources
+     -- if we sent same request again it will create duplicate record
+     -- Put is used for updating resource
+    -- if resource is not available then it will create and update
+
+Q7. what is component scan 
+   -- to identify beans in spring boot application which beans need to be scanned
+@Component scan: helps spring find and manage these beans across your code base without explicitly listing them.
+@ComponentScan => instructs springboot to scan for other components, configuration and services in the same package(and its sub packages) where the main class is located.
+eg.@ComponentScan(basePackages = {"com.marksandspencer.libraryapi"})
+
+Q8. what is stereotype
+   -- kind of component scan create beans. 
+eg. 
+Stereotype is a way of categorizing and defining components in a spring application. By using stereotype annotations, you can provide hints to spring about the roles and responsibility of your classes, making it easier for the framework to manage and organize your application component.
+i) @Component:(generic-stereotype) It indicate that the annotated class is a spring bean(object) and should be picked up by component scanning.
+ii)@Controller: It indicates that the annotated class is responsible for handling HTTP request and generating responses in we application.
+iii)@Service: It indicates that the annotated class contained business logic or perform services for the application.
+iv)@Repository:It indicates that the annotated class is responsible for the data access, such as interacting with databases or other external data sources.
+v) @Configuration: It indicates that the annotated class contains bean definitions or configuration settings for the application context.  
+
+
+Q9. Difference between Spring and Springboot. Why Springboot?
+
+The key difference or key feature of Spring is dependency injection and for spring boot it's autoconfiguration,
+with the help of Spring Boot Framework developers can reduce development time, Developer Effort, and increase productivity
+
+Spring:**
+
+1. **Framework:**
+   - Spring is a comprehensive framework for building enterprise Java applications.
+2. **Configuration:**
+   - Configuration in Spring often involves XML-based or Java-based configuration files.
+   - Setting up a Spring application may require more manual configuration and boilerplate code.
+3. **Flexibility:**
+   - Spring is highly flexible and modular, allowing developers to choose the components they need for their application.
+4. **Learning Curve:**
+   - Due to its extensive features and flexibility, Spring has a high learning curve for beginners.   
+
+**Spring Boot:**   
+1. **Microservices and Convention over Configuration:**
+   - Spring Boot is designed for building microservices and follows the "convention over configuration" philosophy.   
+      COC- It is a software design paradigm(image,prototype) that emphasizes reducing the need of manual configuration and  boilerplate code by relying on sensible defaults and conventions.
+2. **Embedded Servers:**
+   - Spring Boot includes embedded servers like Tomcat, Jetty, or Undertow, eliminating the need for external server configuration.
+ 
+3. **Auto-Configuration:**
+   - Spring Boot introduces auto-configuration, which automatically configures the application based on the dependencies present in the classpath.
+   - Developers can still override auto-configurations if needed.
+
+ 
+**Why Spring Boot:**
+ 
+1. **Rapid Development:**
+   - Spring Boot accelerates development by providing defaults, conventions, and a set of pre-built templates.
+  
+2. **Reduced Configuration:**
+   - With sensible defaults and auto-configuration, developers need to write less configuration code.
+ 
+3. **Microservices Architecture:**
+   - It is well-suited for building microservices and simplifies the development and deployment of microservices.
+
+4. **Built-in Server:**
+   - Spring Boot includes an embedded server, allowing developers to run applications without the need for external server setup.   
+   
+
+Q7.Autowiring  
+Ans: 
+@autowired => is used to automatically wire up dependencies in your code. When you use @Autowired on a field, spring boot looks for a bean of the same type and inject it into that field.
+Eg. if you have a class Car that needs a Engine dependency, you can use @Autowired on the Engine field within the Car class. Spring Boot will search for a bean of type Engine and inject it into the Car class
+
+(Spring boot autowired is the feature of the spring boot framework, which was used to enable us to inject the dependency object implicitly.
+It is used in setter or in constructor injection internally. Autowired is not used in string values or in primitive injection;
+spring boot autowired requires less code because we have no need to write the code while injecting dependency explicitly)
+
+Q8.Difference between setter method for dependency injection and construction based dependency injection?
+
+a)Constructor-based Injection :- Constructor injection involves injecting dependencies through a class constructor. 
+when to use- when dependencies are mandatory and must be available for an object to function properly upon creation. It promotes immutability, as dependencies can be marked as 'final', ensuring  they are set once during object creation.
+Eg.
+@Service
+public class MyService{
+	
+	public final MyRepository repository;
+	
+	//Constructor Injection
+	@Autowired
+	public MyService(MyRepository repository) {
+	this.repository = repository
+	}
+	
+	//Business logic using repository
+	//....
+}
+
+b)Setter Injection: setter injection involves injecting dependencies through setter methods of a class. This approach allows flexibility as dependencies can be set or changed after the object has been created.
+when to use- use setter injection when a dependency is optional or when dependencies can change during the object is created.
+Eg. 
+@Service
+private class MyService {
+	private MyRepository repository;
+	
+	
+	//setter Injection
+	@Autowired
+	public void setRepository (MyRepository repository) {
+		this.repository = repository;
+	}
+	
+	// Business logic using repository
+	//...
+}   
+
+c) Field Injection: Field injection directly injects dependencies into class field using annotations. While convenient, it can sometimes leads to less testable code due to direct field access.
+when to use- Use field injection when working with framework like spring Boot where auto-wiring happens through annotations. Convenient for rapid prototyping or simple cases where testability might not be primary concerns.
+eg.
+public class MyService {
+	@Autowired
+	private MyRepository repository;
+	
+	// Business logic using repository.
+	//...
+}
+
+Q8. Anotations for Rest Web services.
+@GetMapping
+@PostMapping
+@PutMapping
+@PatchMapping
+@RequestMapping
+Ans: 
+i)@RequestMapping:- (can be used with GET,POST,PUT and may other request methods using the method attributes on the annotation)
+Purpose: General-purpose annotation that can handle any HTTP method(GET,POST,PUT,PATCH, DELETE and any HTTP method).
+         This annotation can be used both at the class and at the method level.
+eg.
+@RequestMapping(value = "/example", method = RequestMapping.DELETE)
+public String deleteExample() {
+}
+or(class level)
+@RestController
+@Api(value = "This controller is to run generic Jobs")
+@RequestMapping(value = "hlcstocks/v1")
+public class StockGenericController { 
+}
+
+ii)@GetMapping:- (is only an extension of @RequestMapping with GET method which helps you to improve on clarity on request)
+Purpose: Handle HTTP GET request
+UseCase: Retrieving data or resources.
+Example: Displaying a page, fetching information.
+@GetMapping("/example")
+public String getExample() {
+
+}
+
+iii) @PostMapping:
+Purpose: Handles HTTP POST requests.
+UseCase: Creating a new resources.
+Example: Submitting a form to create a new record.
+
+@PostMapping(value = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<Object> extractAndStoreGenericSupplyData(@RequestBody GenericSupplierDetails genericSupplierDetails) throws HlcStockExtractionException, Exception {
+       
+	   ResponseEntity<Object> response;
+	   Future<Boolean> result = null;
+	          result = stockGenericExtractionService.genericExtraction(genericSupplierDetails);
+        if (result.get()) {
+            response = new ResponseEntity<>(
+                    new ResponseMessage("Request to extract GenericSupplyExtractor Stocks has been accepted"),
+                    HttpStatus.ACCEPTED);
+        } else {
+            response = new ResponseEntity<>(
+                    new ResponseMessage("Request to extract GenericSupplyExtractor IAA is failed"),
+                    HttpStatus.BAD_REQUEST);
+        }
+        return response;
+		
+		
+		}
+		
+iv) @PutMapping:
+Purpose: Handle HTTP PUT requests.
+UseCase: Updating existing resource or creating if not exists.
+Example: Updating a resources with a complete  representation.
+
+@PutMapping("/example/{id}")
+public ResponseEntity<Object> putExample(@PathVariable(value = "id") final String id,
+            @RequestParam(value = "countryCode", required = true) String countryCode) {
+			
+	return new ResponseEntity<>(productAvailability, HttpStatus.OK);
+} 
+
+v) @PatchMapping
+Purpose: Handles HTTP PATCH request
+UseCase: Partially updating existing resources.
+Example: Updating specific fields of a resources.
+
+@PatchMapping("/example/{id}")
+public String patchExample(@PathVariable Long id) {
+
+}
+
+Q9. Difference between Controller and Rest Controller.
+(@Controller is used to mark classes as Spring MVC Controller. @RestController annotation is a special controller used in RESTful Web services,
+and it's the combination of @Controller and @ResponseBody annotation.
+It is a specialized version of @Component annotation.)
+
+In Spring MVC, Both annotations is used to define classes as controller,and responsible for handling HTTP requests and returning appropriate responses.   
+
+@Controller:- (used for map of the model object to view or templates and make it human readable)
+ResponseType: it is used for traditional web application where controller return views (HTML pages)  
+View: it is suitable for application where primary goal is to render server-side views.
+Serialization: it us relies on server-side templates to render views.
+
+@RestController:
+it is combination of 2 annotation @Controller and @ResponseBody. It return data directly, typically as JSON or XML, instead of rendering views.
+It is used for RESTful API.
+
+Q10. What is Rest API(Representational state transfer) (Application programming Interface)
+Ans:
+A REST API is a way for different software systems to communicate over the Internet. It follows specific rules like using standard web addresses (URLs) and standard HTTP methods (like GET for fetching data or POST for creating data) and exchange data in a formate like JSON. 
+
+Eg. It's like a menu for a computer, telling it what to do and what information to give back. Think of it like ordering food online – you choose what you want (like a book or a user profile), and the server (restaurant) gives you the data you asked for. REST APIs are like a universal language for computers to understand and share information. 
+
+Q11. What is @configuration
+Ans: it is used to declare a class as a source of bean definitions. It tells Spring that the class contains one or more bean definitions and should be processed to generate bean definition during the application context initialization.
+
+### Key Points:
+ 
+1. **Bean Configuration:**
+   - Classes annotated with `@Configuration` are typically used to define beans in Spring applications.
+ 
+2. **Java-based Configuration:**
+   - `@Configuration` is commonly used in conjunction with Java-based configuration instead of XML configuration files.
+ 
+3. **Annotation-Driven:**
+   - Spring processes classes annotated with `@Configuration` at runtime to create and configure beans.
+ 
+4. **Bean Definition Methods:**
+   - Methods within `@Configuration` classes annotated with `@Bean` are responsible for creating and configuring beans.
+ 
+5. **Programmatic Configuration:**
+   - `@Configuration` provides a programmatic and type-safe way to configure beans and their dependencies.
+ 
+### Example:
+ 
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+ 
+@Configuration
+public class AppConfig {
+ 
+    @Bean
+    public MyService myService() {
+        return new MyServiceImpl();
+    }
+ 
+    @Bean
+    public MyRepository myRepository() {
+        return new MyRepositoryImpl();
+    }
+}
+```
+In this example:
+ 
+- The `AppConfig` class is annotated with `@Configuration`, indicating that it contains bean definitions.
+- The `myService()` method is annotated with `@Bean`, indicating that it defines a bean of type `MyService`.
+- Similarly, the `myRepository()` method defines a bean of type `MyRepository`.
+ 
+At runtime, Spring processes the `AppConfig` class, creates instances of the beans defined in it, and manages their lifecycle within the application context. The beans can then be injected into other components or accessed programmatically as needed.
+
+
+Q12. how rest api works
+Ans:-
+Alright, imagine you want to get information from a library, but instead of physically going there, you send a message to the librarian asking for a specific book. The librarian checks the request, finds the book, and sends you the details.
+ 
+In the digital world, a REST API (Representational State Transfer Application Programming Interface) works somewhat like this. It's a way for different computer programs (or apps) to talk to each other over the internet.
+ 
+Here's how it works:
+ 
+1. **Request:** You, as one app, send a message (like "Hey, give me info about this book") to another app that has the information you need.
+ 
+2. **Endpoint:** This message is sent to a specific address, called an "endpoint," which is like a dedicated spot in the digital library for certain types of requests.
+ 
+3. **HTTP Methods:** The type of message you send is important. It could be a "GET" request, which is like asking for information, or a "POST" request, which is like submitting new information.
+ 
+4. **Parameters:** You might include additional details in your request, like asking for a specific book by providing its title or author.
+ 
+5. **Server Response:** The app with the information (the library) gets your request, processes it, and sends back a response. This could be the information you asked for or a confirmation that your new information has been added.
+ 
+6. **HTTP Status Codes:** The response comes with a status code, telling you if everything went well (status code 200) or if there was an issue (status codes like 404 for "not found" or 500 for "server error").
+ 
+So, a REST API is like a conversation between different apps over the internet. One app asks for something specific, the other provides the requested information, and they communicate using standard rules, just like you would ask the librarian for a book in a library.

@@ -1,0 +1,100 @@
+
+(HMLO)
+1.External Even Creation - march(java, spring boot, junit, kafka, mongoDb, multi-threading)
+2.Availability calculation for Event Types- Junits - March 718
+3.Performance Testing HMLO - April
+12. OMRS-793: Logger And Dashboard Addition for HMLO Flow  793 - may(logger addition in code)
+21. OMRS-941: Apply filter on ship node during HMLO Node event publish. aug 
+22. HMLO cache implementation -sept
+
+
+4.Reservation Purging for colors-602-april(java, spring boot, mongodb)
+5.SOD IAA configuration changes for MMFlower and Hampers- 510 (application.yml changes)
+6.Stock Generic Extractor EOF failure - 759 may(code change applied asyn call)
+13.Automation of manual updates to Supply details collection - Part II 785 June (java, springBoot, BDD, junit, azure Fileshare) 
+17. Code Fix for RP and Wine Supply Data refresh Automation 857 July(code change including BDD and Junit)
+26.Big Data file upload issue.(analysis and only one url change)
+28. Channel level availability calculation
+29. slick Stick supplier integration code development
+
+======================================================================
+2. System Testing HMLO - march
+16.Automation of manual updates Dev Testing 858 july
+24.Peak readiness performance testing and data preparation. oct
+
+8. Consolidation of Performance test data scripts - 744 may
+14.Production Monitoring and Support - Sprint5 - Week 2 773 June
+15.Production Monitoring and Support - Sprint 6 - Week 2 776 july
+
+
+19.OMRS-914: Alerts and Monitoring dashboard for Greece DC july
+23.Missing alerts creation for demand, reservation, HMLO, supply data refresh - sept
+
+9. DevOps Support - Sprint 1 Week 1 -746 april
+18.Production Monitoring and Support - Q2 23 Sprint 1 - Week 1 881 july
+20.OMRS-886: Production Monitoring and Support - Q2 23 Sprint 3 Aug
+24.Production Monitoring and Support -sepyt
+25.support monitoring- oct
+27.KT(given KT to team)
+
+===========================================================================================
+1.
+Building Increment(s)
+Number of Checkin without build failures in the integration environment
+TARGET
+>95%
+
+===============================================================================================
+Building Increment(s)
+% of functional and regression testing automated
+TARGET
+100%
+
+Throughout sprints, I have been involved in understanding and implementing various technologies like newRelic, PagerDuty to create dashboards so as to facilitate early identification and resolution of various bugs. These tasks have been carried out as an effort to continuously automate repetitive work so as to improve performance. This work has been done in addition to the API development activities that are assigned during sprints.
+These tasks have been carried out as an effort to continuously automate repetitive work so as to improve performance. This work has been done in addition to the API development activities that are assigned during sprints.
+
+
+Recently, I have automated the task of creating API documentation using Cucumber. This is a BDD-driven development methodology that also bridges the gaps in API understanding between the development and the client teams.
+
+===============================================================================================
+
+
+1. External Even Creation - march
+2. System Testing HMLO - march
+3.Availability calculation for Event Types- Junits - March 718
+4.Availability check BDD Testing -721 
+5. Performance Testing HMLO - April
+
+
+6. Reservation Purging for colors-602
+7. SOD IAA configuration changes for MMFlower and Hampers- 510
+
+9.DevOps Support - Sprint 1 Week 1 -746 april
+
+8. Consolidation of Performance test data scripts - 744 may
+8. Consolidation of Performance test data scripts - 744 may
+11. Stock Generic Extractor EOF failure - 759 may
+12. OMRS-793: Logger And Dashboard Addition for HMLO Flow  793 - may
+
+13.Automation of manual updates to Supply details collection - Part II 785 June BDD junit 
+14. Production Monitoring and Support - Sprint5 - Week 2 773 June
+
+15. Production Monitoring and Support - Sprint 6 - Week 2 776 july
+16. Automation of manual updates Dev Testing 858 july
+17. Code Fix for RP and Wine Supply Data refresh Automation 857 July
+18.Production Monitoring and Support - Q2 23 Sprint 1 - Week 1 881 july
+19.OMRS-914: Alerts and Monitoring dashboard for Greece DC july
+
+
+20. OMRS-886: Production Monitoring and Support - Q2 23 Sprint 3 Aug
+21. OMRS-941: Apply filter on ship node during HMLO Node event publish. aug
+
+22. HMLO cache implementation -sept
+23. Missing alerts creation for demand, reservation, HMLO, supply data refresh - sept
+24. support
+
+24. Peak readiness performance testing and data preparation. oct
+25. support monitoring 
+26. Big Data
+27. KT
+

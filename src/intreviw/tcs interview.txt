@@ -1,0 +1,73 @@
+1.diff b/w component and component scan
+@component: marking individual class as bean 
+@Component scan: helps spring find and manage these beans across your code base without explicitly listing them.
+
+
+2. what is @autowired => is used to automatically wire up dependencies in your code. When you use @Autowired on a field, spring boot looks for a bean of the same type and inject it into that field.
+Eg. if you have a class Car that needs a Engine dependency, you can use @Autowired on the Engine field within the Car class. Spring Boot will search for a bean of type Engine and inject it into the Car class
+
+
+3. what is @SpringBootAnotation => Starting point of springboot application. in that only main method will be available. 
+@Configuration=>
+@EnableAutoConfiguration => Allows spring boot to automatically configure your application based on class path settings, reducing the need of explicit configuration.
+@ComponentScan => instructs springboot to scan for other components, configuration and services in the same package(and its sub packages) where the main class is located.
+
+5. what is spring boot and spring and diff
+XML and annotation automatically configuration bases
+
+
+6. how you will create DB connection and @Repository
+
+
+7. what is pom.xml
+
+
+8. how do integrate tools with springboot
+
+
+9. what is spring boot actuator= starter actuator
+health check - up down
+metrics:- CPU, memory usage,request count, performance of application.
+
+
+10. how to create spring bean- using some xml configuration
+
+
+11. which architecture you were using in spring boot application -> maven/gradle 
+12. springBoot version-2.4.0
+
+13. how to change port- server.port
+
+
+
+1. diff b/w final and finally
+2. whys java is using OOPs
+3. Static keyword
+
+
+4. what is method overloading vs method overriding
+
+5. abstract vs interface
+
+6. what is interface - blue print of a class.
+In other words, you can say that interfaces can have abstract methods and variables. It cannot have a method body.
+Java Interface also represents the IS-A relationship.
+
+7. Access Modifier
+public :-
+
+
+8. How beans are creating.
+
+
+9. do you know web socket application.
+
+
+10. what is aggregation framework.
+
+
+11. how many ways to get values from arrayList
+
+12. where class path are stored in springboot.
+
+13. 

@@ -1,0 +1,175 @@
+Q1. what is default methods
+Ans: to achieve backward compatibility introduced default methods in interfaces.
+
+Default method feature introduced in Java 8. Default methods allow interfaces to have method implementation, proving a way to add new methods to interfaces without braking backward compatibility with existing classes that implement those interfaces.
+eg. one interface is used in 100 classes. if you add one method in interface, you have to add implementation of this method in all 100 class. thats why default method can full fill our expectation. whatever class required this default method it can use same or use there own method functionality.
+
+5. what is functional interface and how we can make sure it should be functional interface
+Ans:
+    -- to support functional programing through lambda expression
+    -- by adding @FunctionInterface annotation we can make sure interface always contain one abstract method
+	
+A functional interface in Java is an interface that contains only one abstract method. Functional interfaces are a key concept in Java's functional programming features and are closely associated with the introduction of lambda expressions in Java 8.
+ 
+Here are the characteristics of a functional interface:
+ 
+i). **Single Abstract Method (SAM):**
+   - A functional interface should have only one abstract method (a method without a default implementation).
+   - It can have multiple default or static methods, but it must have exactly one abstract method.
+ 
+ii). **`@FunctionalInterface` Annotation:**
+   - While not strictly required, it's a good practice to use the `@FunctionalInterface` annotation on an interface to explicitly indicate its functional nature.
+   - The annotation helps prevent accidental addition of extra abstract methods, and the compiler will generate an error if more than one abstract method is added.
+ 
+   ```java
+   @FunctionalInterface
+   interface MyFunctionalInterface {
+       void myMethod(); // Single abstract method
+ 
+       default void anotherMethod() {
+           // Default method
+       }
+ 
+       static void staticMethod() {
+           // Static method
+       }
+   }
+   ```
+ 
+iii). **Lambda Expressions:**
+   - Functional interfaces are designed to be used with lambda expressions and method references, enabling concise and expressive code.
+ 
+   ```java
+   MyFunctionalInterface myFunc = () -> {
+       // Lambda expression implementing the abstract method
+       System.out.println("My Method Implementation");
+   };
+   ```
+ 
+iv). **Built-in Functional Interfaces:**
+   - Java provides a set of built-in functional interfaces in the `java.util.function` package, such as `Function`, `Predicate`, and `Consumer`.
+   - These interfaces are annotated with `@FunctionalInterface`.
+ 
+   ```java
+   import java.util.function.Predicate;
+ 
+   public class Example {
+       public static void main(String[] args) {
+           Predicate<String> isNotEmpty = s -> !s.isEmpty();
+       }
+   }
+   ```
+ 
+By following these principles, you ensure that an interface is a functional interface, making it suitable for use with lambda expressions and enabling functional programming paradigms in your Java code. The `@FunctionalInterface` annotation is a helpful tool to explicitly declare your intention and catch unintended additions of abstract methods.
+
+Q6. What is fictional programming?
+Its a way of writing a compute program that focuses on using fictions to perform task and solve them. In functional programming, function are first class citizens, meaning they can passed as argument to other function, returned as values from other function, and assigned to variable.
+
+Functional programming is a way of writing computer programs that focuses on using functions to perform tasks and solve problems. In functional programming:
+ 
+i). **Functions are Key:**
+   - Programs are made up of small, independent functions that take input and produce output.
+ 
+ii). **No Side Effects:**
+   - Functions avoid changing data outside of themselves, making the code predictable and easier to understand.
+ 
+iii). **Immutable Data:**
+   - Data, once created, cannot be changed. Instead of modifying existing data, new data is created.
+ 
+iv). **Declarative Style:**
+   - Code expresses "what" needs to be done rather than "how" it should be done.
+ 
+v). **Higher-Order Functions:**
+   - Functions can take other functions as parameters or return them, providing flexibility and abstraction.
+ 
+Functional programming helps in writing clear, concise, and maintainable code. It's like using building blocks (functions) to construct programs, making it easier to understand and reason about.
+
+
+Q7. Some new java 8 features.
+Ans:
+1.default and static methods in Interfaces
+2.Functional Interfaces and Lambda Expressions
+3.Java Stream API
+4.Java Time API
+5.Collection API improvements
+6.Concurrency API improvements
+7.Java IO improvements
+
+i)Default Method in interfaces:(Facilitates Backward Compatibility)
+Java 8 allowed the addition of default and static methods in interfaces. Default methods allowing developers to add new methods to interfaces without breaking the classes implementing these interfaces. This feature supports interfaces without requiring changes in implementing classes.
+eg. jab bohot sare classes particular interface ka impplimentation dete ho. if one abstract method ham interface me add kare toh uska implimenttion sare class me dena padega if not required also. karke default or static method java 8 me interface me use kiya gaya hai.
+
+ii)Functional Interfaces and Lambda Expressions :
+Functional Interfaces:-
+Functional interfaces have a single abstract method and can be used with lambda expression.
+Examples like Runnable, Comparator
+'@FuctionalInterfaces' annotation ensures that an interface can have only one abstract method.
+
+**)Lambda Expressions:
+It is a concise way to represent an anonymous function(a function without name). It provides a clear and more readable way to write anonymous  method or function, especially when working with functional interfaces.
+a)Syntax: arrow '->' and body.
+(parameter) -> expression
+or 
+(parameter) ->{ statement; }
+b)Functional Interfaces: 
+Lambda expression are primarily used with functional interfaces, which are interfaces with a single abstract method. The lambda expression provides a concise way to implement that single method.
+eg. interface MyFuctionalInterface {
+	void myMethod(int x);
+}
+//Using a lambda expression
+MyFuctionalInterface myFunc = (x) -> System.out.println(x);
+c) Shorter Syntax:-
+Lambda Expression reduce boilerplate code and provide a more compact syntax compared to traditional anonymous inner classes.
+eg.
+//Traditional anonymous inner class
+Runnable runnable = new Runnable() {
+	public void run() {
+		System.out.println("Hello");
+	}
+};
+
+//Lambda expression equivalent Runnable runnableLamda = () -> System.out.println("Hello")
+ 
+d) Parameters and Type Interface :
+Lambda expression can have zero or more parameters. If there is a single parameter, parentheses are optional. Type inference allows the compiler to determine the types of parameters.
+eg.
+//Lambda expression with parameters
+(a,b) -> a+b;
+
+//Lambda expression with a single parameter
+x -> x*x*
+
+e) Lambda expression facilitate a more functional programming style in java, allowing the us of higher-order functions, method references, and streamline code.
+eg.
+List<String> names = Arrays.asList("Aman", "Bhushan", "Chetan");
+
+//Using lambda expression for sorting 
+names.sort((s1,s2) -> s1.compareTo(s2));
+
+//Using method reference for sorting
+name.sort(String :: comapareTo);
+
+Lambda expression play a crucial role in making Java more expressive and supporting functional programming paradigm introduced in Java 8. They are particularly useful when working with the streams API, the collection framework, and other functional interfaces. 
+
+
+Q8. explain about streams
+Ans:
+Stream API:
+The Java Stream API is an abstract layer that implements the pipeline processing of the data. 
+
+Streams provide a new way to handle a collections in Java. They allow functional style operation on collection, making it easier to perform bulk operations like filter, map, reduce and collect.
+
+Java Stream holds two different types of operations that are:
+
+Intermediate operations: Intermediate operations are the operations that return a stream so that the user can chain various intermediate operations without using semicolons, as we do in other programming languages like Scala.
+eg. map,filter,distinct,sorted.
+
+Terminal operations: The terminal operations are the operations that are mainly void and null, and if not null, these operations return a non-stream as a result.
+eg. min, max, sum, count, average, reduce, collect, forEach.
+
+Q9. what is lambda expression
+Lambda expression allow you to write concise and efficient code.
+Lambda expression enables functional programming by allowing the use of anonymous function.
+They simplify code, especially when working with collections and Streams API 
+lambda expressions enables the use of functional programming concepts in java.
+

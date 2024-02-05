@@ -1,0 +1,219 @@
+Q1. Interface, abstract, runtime time exception.
+
+i)Interface:
+1. Interface is a keyword and blueprint of class.
+2. By default all the method in the interface are abstract we can not write implementations. But going forward in java 8 there is a feature where you can  write default and static methods in your interfaces.
+3. An Interface can only have public abstract methods.
+3. If there is certain feature where there is no relationship between the classes then you have to go for the interfaces.
+4. Using "implements" keyword we can implemented interface in class.
+5. Interface can only have public static final(constant) variable.
+6. Using Interfaces we can achieves multiple inheritance. class can implement multiple interface using commas(,).
+7. Interface can extends single interface.
+8. Doesn’t allow constructors.
+9. Interfaces can use for loose coupling(save, delete, update), multiple inheritance, define a Contract(set of method implementation is required if we implements interface)
+
+eg. // Interface for a data access object
+public interface DataAccessObject {
+    void save();
+    void update();
+    void delete();
+}
+ 
+// Concrete class implementing the DataAccessObject interface for database operations
+public class DatabaseDAO implements DataAccessObject {
+    @Override
+    public void save() {
+        // Implementation for saving in a database
+    }
+ 
+    // Implement other methods...
+}
+
+ii)Abstract:
+1. Abstract is a keyword
+2. Abstract class can contain both abstract and concrete methods.
+3. if that is IS-A relationship between your classes then you can go for abstract class
+4. Abstract class can extend another concrete(regular) class or abstract class. 
+5. Can have member variables (fields).
+6. Allows constructors.
+7. Supports method implementation.
+8. Enables the use of access modifiers.
+
+Eg. abstract class Shape {
+    abstract void draw(); // Abstract method
+}
+ 
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+iii)RunTime Exception(Un-Checked Exception):
+1.Unchecked exception are the one which are handled at runtime because they can not be checked at compile-time.
+2.The class which has inherits RuntimeException are known as Unchecked Exception.
+Eg.
+ArithmeticException, NullPointerException, ArrayIndexOutOfBoundException, etc
+
+Compile-Time Exception(Checked Exception):
+1.Checked Exception are the one which checked at compile-time.
+2.The class which directly inherits Throwable class except RuntimeException and Error(eg.OutOfMemoryError, VirtulaMachineError we can not handle)
+Eg. IOException, SQlException, ClassNotFoundException 
+
+Q2. Program (You have Two arrays merge them in 3rd array ,
+	 in sorting order, remember duplicates are not allowed)
+:
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class MergeArrays {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1,3,5,7};
+        int[] arr2 = {2,4,6,8,5,7}; // note duplicates are 5,7
+
+        int[] mergedArr = mergeAndSortArrays(arr1,arr2);
+        System.out.println("Merged and sorted Array: " + Arrays.toString(mergedArr));
+    }
+
+    private static int[] mergeAndSortArrays(int[] arr1, int[] arr2) {
+
+        //use set to handle uniqueness
+        Set<Integer> mergedSet = new HashSet<>();
+
+        //add elements from both arrays to the set
+        for(int num:arr1) {
+            mergedSet.add(num);
+        }
+        for(int num:arr2) {
+            mergedSet.add(num);
+        }
+
+        //convert set back to array
+        int[] mergedArray = mergedSet.stream().mapToInt(Integer::intValue).toArray();
+
+        // Sort the merged array
+        Arrays.sort(mergedArray);
+
+        return  mergedArray;
+    }
+}
+
+===========================================================================================================================================================
+In Java, `mapToInt(Integer::intValue)` is part of the Stream API and is used to convert a stream of `Integer` objects to a stream of primitive `int` values. Let me break down its meaning:
+ 
+1. **`mapToInt`:**
+   - `mapToInt` is an intermediate operation in the Stream API that transforms each element of the stream using the provided function.
+ 
+2. **`Integer::intValue`:**
+   - `Integer::intValue` is a method reference to the `intValue()` method of the `Integer` class.
+   - This method reference is equivalent to writing a lambda expression like `integer -> integer.intValue()`.
+ 
+When combined, `mapToInt(Integer::intValue)` is saying that for each element in the stream of `Integer` objects, convert it to its corresponding primitive `int` value using the `intValue()` method. This is commonly used when you have a stream of boxed integers (`Integer` objects) and want to operate on the primitive `int` values.
+ 
+Here's a simple example:
+ 
+```java
+import java.util.Arrays;
+ 
+public class MapToIntExample {
+    public static void main(String[] args) {
+        Integer[] integers = {1, 2, 3, 4, 5};
+ 
+        // Convert Integer stream to int stream using mapToInt
+        int[] primitiveInts = Arrays.stream(integers)
+                                     .mapToInt(Integer::intValue)
+                                     .toArray();
+ 
+        System.out.println(Arrays.toString(primitiveInts));
+    }
+}
+ 
+In this example, `mapToInt(Integer::intValue)` is used to convert the stream of `Integer` objects to a stream of primitive `int` values, which are then collected into an array. The result is an array `[1, 2, 3, 4, 5]`.	 
+
+
+Q3.write a program to print list of 100 numbers where multiple of 3 should be print as fizz, multiple of 5 should be print as buzz and multiple of 3 and 5 print as fizzbuzz. else print number itself.
+Code:
+package basics;
+
+import java.util.Scanner;
+
+public class FizzBuzz {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter The Number:");
+        int n = sc.nextInt();
+
+        for (int i=1; i<=n; i++) {
+
+            if (i%3==0 && i%5==0) {
+                System.out.print("FizzBuzz");
+            } else if(i%3==0) {
+                System.out.print("Fizz");
+            } else if (i%5==0) {
+                System.out.print("Buzz");
+            }
+            else {
+                System.out.print(i);
+            }
+            System.out.print(","+" ");
+        }
+    }
+}
+
+Q4. Which java version you have worked on?
+Ans : I have worked on Java 8.
+
+Q5. Can we have multiple java classes in one java file?
+Ans : Yes, We can have multiple java classes in same file where only one Java class can be public and file name must be match the public class name.
+however, you can add include multiple non-public classes or interface in the same source file.
+
+Q6. What is Javac?
+Ans : It is Java compiler. which generate the Java byte-code(.class file). that can be executed by JVM.
+compiler will convert Java source code (.java file) to byteCode(.class file).
+eg. javac MyProgram.java
+
+Q7. Can we run java code without Javac command from Java 11?
+Ans: Yes, Starting from java 11, you can run java source code directly using the java Myprogram.java command.
+
+Q8. what is classpath?
+Ans: CLASSPATH is actually an environment variable in Java, and tells Java applications and the Java Virtual Machine (JVM) where to find the libraries of classes.
+
+
+Q9.Why we are using javac, java commands
+    -- javac comand used for compiling the java program
+    -- java command used for run the program
+
+Q10. why we use public static void main
+Ans:
+i).public: public keyword is an access modifier that represents visibility. It means it is visible to all. So that JVM (Java Virtual Machine) can execute the method from anywhere. 
+
+ii).static : The static keyword in Java is mainly used for memory management.
+If we declare any method as static, it is known as the static method. The core advantage of the static method is that there is no need to create an object to invoke the static method. The main() method is executed by the JVM, so it doesn't require creating an object to invoke 
+the main() method. So, it saves memory. 
+
+iii). void: void is the return type of the method. It means it doesn't return any value. 
+ 
+iv).main(): main represents the starting point for JVM to start execution of a Java program. Without the main() method, JVM will not execute the program. 
+It is a default signature which is predefined in the JVM.
+ 
+v).String[] args or String args[] : it is used for command line argument. It is an array of elements of type String. agrs[] is the array name, and it is of String type
+ 
+vi).System.out.println(): It is used to print statement. System is a class, out is an object of the PrintStream class, println() is a method of the PrintStream class. Usually, a method is invoked by objectname.methodname(). But we cannot create the object to PrintStream class directly. So, Java provides an
+alternative way to create the object of PrintStream class that is System.out. The out is an instance of the System class and is of type PrintStream.
+
+
+Q11. what is difference between abstract and interface which will be used in which scenarios
+     -- Abstract class can be used if we want to have both concrete methods and abstract methods
+     -- if we want to construct object using constructor in this scenario, we will use abstract
+     -- we can add new abstract methods and partial abstraction achievedg
+
+     -- Interface will have pure abstract methods
+     -- if we add new methods then those should be implemented classes
+     -- pure abstraction achieved through interface
+
+Q12. what is inheritance(IS-A)
+Ans: In which one class acquires all the properties and behaviors of the parent class. we can say child is extending all properties and behaviors of parent class.

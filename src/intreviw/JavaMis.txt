@@ -1,0 +1,222 @@
+Q1. What is Tdd & BDD? 
+Ans : TDD is test driven development which means first write the test cases, cover all corner cases and according develop the code.
+      BDD is behavioural test driven development. Any Business people can easily understand the Cucumber testcases.
+	  
+Q2. Have you written the test cases?
+Ans : Yes I have wrote Junit, Mockito and Cucumber test cases. Cucumber TCs are behavioural based test cases.
+
+Q3. Which version of Junit you have worked on, have you used Junit5?
+Ans : Yes, I have used Junit5 as well. 
+
+Q4. what is mock bean
+   -- to mock dependent class of service we will use mock bean
+In SpringBoot, @MockBean is a annotation used for creating mock object of beans when writing unit test. It replaces real beans with mock implementation.
+
+=============================================================================================================================================================
+
+Q1. What is the difference between RabbitMQ & Kafka?
+Ans : Kafka is Asyncronus messagesing system in dustributted manner. I have used WebMQ earlier. WebMQ and rebbitMq are mainly used for peer for peer messaging system. 
+Kafka has other benefits also like scalibility, fault tolerance etc. 
+
+=======================================================================================================================================================
+
+Q1. What is difference between fetch and pull in git commands?
+Ans :
+git pull:  Pull command used to fetch all the changes which are there in marster branch to our local repository. 
+It automatically fetches the changes from the remote repository and merges them into your local branch.
+It's a combination of git fetch and git merge.
+git fetch:
+It fetches the changes from the remote repository but doesn't automatically merge them into your local branch.
+The fetched changes are stored in remote-tracking branches (e.g., origin/master).
+git fetch does not modify your local branch; it updates the remote-tracking branches.
+
+
+Q2. what is difference between rebase and merge
+   -- merge is used to combine feature branch with master where commits will be improper order.(clear history)
+  -- rebase is little risky which new branch changes will be merged to master
+  -- Use rebase when you want a cleaner, more linear history. It's like saying, "Let's make it look like we worked on this one after the other, even though we actually worked in paralle
+ 
+================================================================================================================================= 
+Q1. what is pod and service
+   -- Pod is like server where we can deploy our changes using docker image
+   -- Service used for communication between pods in kubernetes
+   
+   14. why you will choose a lambda/API gateway over other container solutions.
+(I have to read)
+   
+=============================================================================================================
+
+Q1. Benefits of MongoDB. Difference between NoSQL and SQL.
+
+Flexible document schemas.
+Widely supported and code-native data access.
+Change-friendly design.
+Powerful querying and analytics.
+Easy horizontal scale-out with sharding(sharding is a method for distributing data into multiple machine).(use for load balancing)
+Simple installation.
+Cost-effective.
+
+Both SQL and NoSQL Databases have their set of advantages and disadvantages.
+SQL databases can be considered when you are looking for data consistency, reliability, integrity, and when the data is structured.
+NoSQL databases are a much better option if the data is large, semi-structured, or unstructured and you are looking for faster storage and retrieval of data. 
+
+In MongoDB, the aggregation pipeline consists of stages and each stage transforms the document.
+a)Displaying the total number of students in one section only 
+db.students.aggregate([{$match:{sec:"B"}},{$count:"Total student in sec:B"}])
+b)Displaying the total number of students in both the sections and maximum age from both section
+db.students.aggregate([{$group: {_id:"$sec", total_st: {$sum:1}, max_age:{$max:"$age"} } }])
+c)Displaying details of students whose age is greater than 30 using match stage 
+db.students.aggregate([{$match:{age:{$gt:30}}}])  
+d)Sorting the students on the basis of age 
+db.students.aggregate([{'$sort': {'age': 1}}])
+e)Displaying details of a student having the largest age in the section – B 
+db.students.aggregate([{$match:{sec:"B"}},{'$sort': {'age': -1}},{$limit:1}])
+f)Counting the total numbers of documents
+db.studentsMarks.count()
+g)Displaying distinct names and ages (non-repeating) 
+db.studentsMarks.distinct("name")
+
+
+Q2. tell about mongobd
+Certainly! Here are some potential interview questions about MongoDB:
+ 
+1. **What is MongoDB?**
+   - MongoDB is a NoSQL database management system that stores data in flexible, JSON-like documents. It is designed to be scalable, flexible, and efficient in handling large amounts of data.
+ 
+2. **Explain the key features of MongoDB.**
+   - Features include document-oriented storage, dynamic schema, horizontal scalability, rich query language, indexing, and support for secondary indexes.
+ 
+3. **How is MongoDB different from traditional relational databases?**
+   - MongoDB is a NoSQL database, while traditional relational databases are SQL-based. MongoDB uses a flexible, document-oriented model instead of tables with rows and columns. It is schema-less and supports horizontal scalability.
+ 
+4. **What is BSON in MongoDB?**
+   - BSON (Binary JSON) is a binary representation of JSON-like documents that MongoDB uses to store data. It extends the JSON model to provide additional data types and to be more efficient for storage and traversal.
+ 
+5. **Explain the concept of a document in MongoDB.**
+   - A document is a basic unit of data in MongoDB, similar to a row in a relational database. It is a JSON-like object with key-value pairs and is used to represent and store data.
+ 
+6. **What is a collection in MongoDB?**
+   - A collection is a group of MongoDB documents. It is similar to a table in relational databases but does not require a predefined schema, allowing flexibility in the types and structures of documents it can contain.
+ 
+7. **How does indexing work in MongoDB?**
+   - MongoDB uses indexes to improve query performance. Indexes can be created on single fields or compound (multiple) fields. They facilitate faster data retrieval by allowing MongoDB to locate documents more efficiently.
+ 
+8. **Explain the sharding concept in MongoDB.**
+   - Sharding is a method used to distribute data across multiple machines. MongoDB automatically divides a collection into smaller chunks called shards, which are distributed across different servers. This enables horizontal scaling and improved performance.
+ 
+9. **What is the role of a replica set in MongoDB?**
+   - A replica set is a group of MongoDB servers that maintain the same data set. It provides data redundancy and high availability by maintaining multiple copies (replicas) of data. If one server fails, another can take over, ensuring continuous operation.
+ 
+10. **How do you perform CRUD operations in MongoDB?**
+    - MongoDB supports CRUD operations: Create (insert), Read (find), Update (update), and Delete (remove). These operations are performed using methods such as `insertOne`, `find`, `updateOne`, and `deleteOne` in the MongoDB API.
+ 
+These questions cover various aspects of MongoDB, from its basic concepts to more advanced features like sharding and replica sets. Prepare for these questions to demonstrate your understanding of MongoDB in an interview setting.
+
+==========================================================================================================================================================
+
+Q1. tell about design patterns
+Ans:
+1. **Single Responsibility Principle (SRP):**
+   - **In a nutshell:** Each class should have only one job or responsibility.
+      - **Example:** `MessageSender` class is responsible for sending messages, while `MessageLogger` class handles logging. Each has a single responsibility.
+        -Bank service example((deposite, withdraw,) send otp service(NotificationService), loan service, printpassbook)
+ 
+2. **Open/Closed Principle (OCP):**
+   - **In a nutshell:** Classes should be open for extension but closed for modification.
+      - **Example:** You can add a new message delivery method (extension) without changing the existing code that sends or logs messages.
+	  - NotificationService in that 1 method is available like send otp through mobile and email. if requirement send otp though whatspp. So I will create interface for Notification service and add send opt method. then I will craete email, mobile, whatapp notification service class and impliment Notification service interface.
+ 
+3. **Liskov Substitution Principle (LSP):**
+   - **In a nutshell:** Subtypes must be substitutable for their base types without altering the correctness of the program.
+      - **Example:** If you have a `TextMessage` class (subtype), you can use it wherever a `Message` class (base type) is expected without causing issues.
+ 
+4. **Interface Segregation Principle (ISP):**
+   - **In a nutshell:** A class should not be forced to implement interfaces it doesn't use.
+      - **Example:** Instead of having a massive `MessageService` interface, split it into `MessageSender` and `MessageLogger` interfaces. Classes implement only what they need.
+ 
+5. **Dependency Inversion Principle (DIP):**
+   - **In a nutshell:** High-level modules should not depend on low-level modules. Both should depend on abstractions.
+      - **Example:** `MessageProcessor` depends on abstractions (`MessageSender` and `MessageLogger` interfaces) rather than concrete implementations, allowing flexibility in choosing specific implementations.
+	  
+	  // Single Responsibility Principle (SRP)
+class MessageSender {
+    public void sendMessage(String message) {
+        // send the message
+    }
+}
+ 
+class MessageLogger {
+    public void logMessage(String message) {
+        // log the message
+    }
+}
+ 
+// Open/Closed Principle (OCP)
+interface MessageDelivery {
+    void deliverMessage(String message);
+}
+ 
+class EmailDelivery implements MessageDelivery {
+    public void deliverMessage(String message) {
+        // send message via email
+    }
+}
+ 
+class MessageService {
+    private final MessageDelivery deliveryMethod;
+ 
+    public MessageService(MessageDelivery deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
+    }
+ 
+    public void processMessage(String message) {
+        // additional processing
+        deliveryMethod.deliverMessage(message);
+    }
+}
+ 
+// Liskov Substitution Principle (LSP)
+class TextMessage extends Message {
+    // text-specific properties and methods
+}
+ 
+// Interface Segregation Principle (ISP)
+interface MessageSender {
+    void sendMessage(String message);
+}
+ 
+interface MessageLogger {
+    void logMessage(String message);
+}
+ 
+class SimpleMessageSender implements MessageSender {
+    public void sendMessage(String message) {
+        // send the message
+    }
+}
+ 
+class ConsoleMessageLogger implements MessageLogger {
+    public void logMessage(String message) {
+        // log the message to console
+    }
+}
+ 
+// Dependency Inversion Principle (DIP)
+class MessageProcessor {
+    private final MessageSender sender;
+    private final MessageLogger logger;
+ 
+    public MessageProcessor(MessageSender sender, MessageLogger logger) {
+        this.sender = sender;
+        this.logger = logger;
+    }
+ 
+    public void processMessage(String message) {
+        // additional processing
+        sender.sendMessage(message);
+        logger.logMessage(message);
+    }
+}
+
+Remember, SOLID principles are like guidelines to write code that's flexible, maintainable, and easy to understand. They're tools to help you build robust software.
+
