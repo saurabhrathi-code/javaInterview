@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class MergeTwoArrayListAndSort {
+public class Q2MergeTwoArrayListAndSort {
 
     public static void main(String[] args) {
 

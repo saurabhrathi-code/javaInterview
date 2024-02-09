@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class HighestSalary {
+public class Q6HighestSalary {
 
     public static void main(String[] args) {
 
@@ -22,7 +22,6 @@ public class HighestSalary {
                 new Employee("Darshan", 92, 'M'),
                 new Employee("Adarsh", 80, 'M')
         );
-
 
         Optional<Employee> highestAge = empList.stream()
                 .collect(Collectors.maxBy(Comparator.comparing(Employee::getEmpAge)));

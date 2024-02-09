@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //How to find employees name starting with alphabet A using stream API
-public class FindEmployeeName {
+
+public class Q1FindEmployeeName {
 
     public static void main(String[] args) {
         List<Employee> empList = Arrays.asList(

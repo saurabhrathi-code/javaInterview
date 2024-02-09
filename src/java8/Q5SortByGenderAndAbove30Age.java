@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SortByGenderAndAbove30Age {
+public class Q5SortByGenderAndAbove30Age {
 
     public static void main(String[] args) {
         List<Employee> empList = Arrays.asList(
@@ -22,7 +22,7 @@ public class SortByGenderAndAbove30Age {
 
         List<Employee> sortedList = empList.stream()
                 .filter(e -> e.getEmpAge()>30)
-                .sorted(Comparator.comparingInt(Employee::getEmpAge))
+                .sorted(Comparator.comparingInt(Employee::getGender))
                 .collect(Collectors.toList());
 
         sortedList.forEach(System.out::println);
