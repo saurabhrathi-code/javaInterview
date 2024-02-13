@@ -1,0 +1,38 @@
+Please practice the below java programs using Java 8 features:
+ 
+1. Given a String, find the first non-repeated character in it using Stream functions?
+String input = "Java articles are Awesome";
+2. Write a program to print duplicate numbers.
+3. Write a program to find whether a string or number is palindrome or not.
+4. Given a String, find the first repeated character in it using Stream functions?
+String input = "Java articles are Awesome";
+5. Write a program to find min and max numbers in the array.
+6. Write a program to find the second-highest number in an array.
+7. Write a program to Find the Second-Lowest Number.
+8. Write a program to a Flattering list of objects.
+9. Write a program to Print Even Numbers.
+10.  Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+11. Write a program to sort the 2 lists in descending order.
+13. Write a Java 8 program to concatenate two Streams?
+14. Write a program to sum a list - initial value is 100. for ex 100+ (sum_of_elements).
+15. Write a program to append char in char ex-input- {A, B, C} output->[A_X, B_Y, C_Z].
+16. Write a program to find the only duplicate count list in the List.
+17. Given a list of integers, find the total number of elements present in the list using Stream functions
+18. Given a list of integers, find the total number of distinct elements present in the list using Stream functions
+19. Get the current date and time using Java 8 Date and Time API
+20. Java 8 program to perform cube on list elements and filter numbers greater than 50.
+21. Write a Java 8 program to sort an array and then convert the sorted array into Stream?
+22. How to use map to convert object into Uppercase in Java 8?
+23.  How to convert a List of objects into a Map by considering duplicated keys and store them in sorted order?
+24. How to count each element/word from the String ArrayList in Java8?
+List<String> names = Arrays.asList("AA", "BB", "AA", "CC");
+25.How to check if list is empty in Java 8 using Optional, if not null iterate through the list and print the object?
+26. Java 8 – Convert Epoch time milliseconds to LocalDate or LocalDateTime
+27. Java 8 – How to calculate days between two dates?
+28. Java 8 – Filter a null value from a Stream
+Stream<String> language = Stream.of("java", "python", "node", null, "ruby", null, "php");
+29.Group by a List and display the total count of it in ascending order
+List<String> items =
+               Arrays.asList("apple", "apple", "banana",
+                       "apple", "orange", "banana", "papaya");
+30.How to convert a primitive Array to List.
