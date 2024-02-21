@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//24. How to count each element/word from the String ArrayList in Java8?
+//List<String> names = Arrays.asList("AA", "BB", "AA", "CC");
+
 public class Q23ElementCount {
 
     public static void main(String[] args) {

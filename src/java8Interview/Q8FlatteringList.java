@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//8. Write a program to a Flattering list of objects.
 public class Q8FlatteringList {
     public static void main(String[] args) {
 

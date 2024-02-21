@@ -3,6 +3,8 @@ package java8Interview;
 import java.util.Arrays;
 import java.util.List;
 
+//18. Given a list of integers, find the total number of distinct
+// elements present in the list using Stream functions
 public class Q17DistinctElementInAList {
     public static void main(String[] args) {
 

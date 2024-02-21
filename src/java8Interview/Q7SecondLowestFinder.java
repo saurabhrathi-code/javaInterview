@@ -2,6 +2,7 @@ package java8Interview;
 
 import java.util.Arrays;
 
+//7. Write a program to Find the Second-Lowest Number.
 public class Q7SecondLowestFinder {
     public static void main(String[] args) {
 

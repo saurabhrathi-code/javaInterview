@@ -2,6 +2,7 @@ package java8Interview;
 
 import java.util.stream.IntStream;
 
+//3. Write a program to find whether a string or number is palindrome or not.
 public class Q3PalindromeChecker {
     public static void main(String[] args) {
         String inputString = "l$evel";

@@ -3,6 +3,8 @@ package java8Interview;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+//1. Given a String, find the first non-repeated character in it using Stream functions?
+//String input = "Java articles are Awesome";
 public class Q1FirstNonRepeatedCharacter {
     public static void main(String[] args) {
 

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//16. Write a program to find the only duplicate count list in the List.
 public class Q15DuplicateCountInList {
     public static void main(String[] args) {
 

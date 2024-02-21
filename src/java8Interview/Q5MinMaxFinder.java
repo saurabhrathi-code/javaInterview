@@ -3,6 +3,7 @@ package java8Interview;
 import java.util.Arrays;
 import java.util.OptionalInt;
 
+//5. Write a program to find min and max numbers in the array.
 public class Q5MinMaxFinder {
     public static void main(String[] args) {
 

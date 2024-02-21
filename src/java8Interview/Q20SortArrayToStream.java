@@ -3,7 +3,7 @@ package java8Interview;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+//21. Write a Java 8 program to sort an array and then convert the sorted array into Stream?
 public class Q20SortArrayToStream {
     public static void main(String[] args) {
 

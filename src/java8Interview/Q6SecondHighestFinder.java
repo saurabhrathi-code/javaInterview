@@ -2,9 +2,8 @@ package java8Interview;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Optional;
-import java.util.OptionalInt;
 
+//6. Write a program to find the second-highest number in an array.
 public class Q6SecondHighestFinder {
     public static void main(String[] args) {
 

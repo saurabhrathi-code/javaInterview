@@ -15,13 +15,12 @@ public class Q2Point1DuplicateNumber {
         List<Integer> integerList = Arrays.asList(integersArray);
 
         //Use Java 8 stream API to group elements by counting occurrence
-        Map<Integer, Long> collect = integerList.stream().collect(Collectors.groupingBy(n -> n, Collectors.counting()));
+        Map<Integer, Long> collect = integerList.stream()
+                .collect(Collectors.groupingBy(n -> n, Collectors.counting()));
 
         // Print Duplicate Numbers
         collect.forEach((num,count)-> {
-
             //System.out.println(num+":"+count);
-
             if (count>1) {
                 System.out.println(num);
             }

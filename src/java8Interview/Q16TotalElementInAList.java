@@ -3,6 +3,7 @@ package java8Interview;
 import java.util.Arrays;
 import java.util.List;
 
+//17. Given a list of integers, find the total number of elements present in the list using Stream functions
 public class Q16TotalElementInAList {
     public static void main(String[] args) {
 
