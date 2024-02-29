@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//29.Group by a List and display the total count of it in ascending order
+//List<String> items =
+//               Arrays.asList("apple", "apple", "banana",
+//                       "apple", "orange", "banana", "papaya");
 public class Q28GroupAndCount {
     public static void main(String[] args) {
 

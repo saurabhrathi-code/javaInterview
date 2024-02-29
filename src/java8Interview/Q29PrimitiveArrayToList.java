@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//30.How to convert a primitive Array to List.
 public class Q29PrimitiveArrayToList {
     public static void main(String[] args) {
 

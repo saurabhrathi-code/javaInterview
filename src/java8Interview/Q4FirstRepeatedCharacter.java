@@ -36,9 +36,5 @@ public class Q4FirstRepeatedCharacter {
                         .orElse(null);
 
         System.out.println(c);
-
-
-
-
     }
 }
